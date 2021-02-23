@@ -1,29 +1,27 @@
-// import React from 'react'
-import "../styles/pages/Main-search.scss";
+import React from 'react'
+import Results from "./results";
+import Nav from "./Nav";
+import ResultContent from './Result-content'
+// import {search} from '../Images/search.svg'
 
 function MainSearch() {
     return(
         <header>
-            <nav>
-                <ul>
-                    <li>Nosotros</li>
-                </ul>
-                <ul>
-                    <li>Registrate</li>
-                    <li>Iniciar sesion</li>
-                </ul>
-            </nav>
+            <Nav/>
             <main>
                 <img src="https://lh3.googleusercontent.com/ogw/ADGmqu_ksm6Ql15mCzcSRiahXsgeljHqXoPqOfDWWnlo=s32-c-mo" alt="imagen de perfil"  title="Cuenta de Google: jairo ramirez (trolljairo@gmail.com)"/>
-                <h1>Titulo pagina</h1>
+                <h1>THE LAST WORD</h1>
                 <div>
                     <section className="section__input">
-                        <input className="main-input-text" type="text"/>
-                        <a className="input-micro-icon"></a>
+                        <input type="text"/>
+                        {/* <img src={search} className='icon-search'></img> */}
                     </section>
-                    <button>Icono</button>
                 </div>
             </main>
+            <ResultContent/>
+            {/* <Results/>
+            <Results/>
+            <Results/> */}
         </header>
     )
 }

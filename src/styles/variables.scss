@@ -1,3 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 
-$font: 'Oswald', sans-serif;
+// Variables
+$font: "Oswald", sans-serif;
+$title-color: #fff4e8;
+$color-text: #313131;
+$border-content: #acacac;
+
+//Genericos
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+// Componentes
+@import "./pages/main-search";
+@import "./pages/reults";
+@import "./pages/nav";
+@import "./pages/result-content";

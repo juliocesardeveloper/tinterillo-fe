@@ -6,23 +6,23 @@ function ResultContent(){
             <div className='main__result-left'>
                 <div className='side-content'>
                     <p className='item'>Titulo III</p>
-                    <span className='item'>Arrow-Icon</span>
+                    <span className='item'>=</span>
                     <p className='item'>Capitulo 1</p>
-                    <span className='item'>Arrow-Icon</span>
+                    <span className='item'>=</span>
                     <p className='item'>Articulo 96</p>
                 </div>
                 <div className='side-content'>
                     <p className='item'>Titulo III</p>
-                    <span className='item'>Arrow-Icon</span>
+                    <span className='item'>=</span>
                     <p className='item'>Capitulo 1</p>
-                    <span className='item'>Arrow-Icon</span>
+                    <span className='item'>=</span>
                     <p className='item'>Articulo 96</p>
                 </div>
                 <div className='side-content'>
                     <p className='item'>Titulo III</p>
-                    <span className='item'>Arrow-Icon</span>
+                    <span className='item'>=</span>
                     <p className='item'>Capitulo 1</p>
-                    <span className='item'>Arrow-Icon</span>
+                    <span className='item'>=</span>
                     <p className='item'>Articulo 96</p>
                 </div>
             </div>

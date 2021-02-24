@@ -68,6 +68,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/c
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
+#Install Icons
+
+The Icons of the project fueron dowloaded at the web page fortawesome (https://www.npmjs.com/package/@fortawesome/react-fontawesome). Next, We show how to install the pakage:
+
+[npm i --save @fortawesome/fontawesome-svg-core  @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons]
+
+#Use Icons on components
+
+We need to import the next:
+
+[import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";]
+[import { faGreaterThan } from "@fortawesome/free-solid-svg-icons";]
+
+In this case, "faGreaterThan" means the icon we need to show to the user
+
 ### Making a Progressive Web App
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)

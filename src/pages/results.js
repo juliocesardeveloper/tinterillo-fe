@@ -1,13 +1,21 @@
 import React from 'react'
+// import iconos
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGreaterThan } from "@fortawesome/free-solid-svg-icons";
 
-function Result(){
+function Results({click}){
+
+    const onClick = () => {
+        click()
+    }
+
     return(
-        <div className='result__content'>
+        <div className='result__content' onClick={onClick}>
             <div className='result__content-guide'>
                 <h2 className='item'>Titulo III</h2>
-                <span className='item'>Arrow-Icon</span>
+                <FontAwesomeIcon icon={faGreaterThan} className='icon'/>
                 <h2 className='item'>Capitulo 1</h2>
-                <span className='item'>Arrow-Icon</span>
+                <FontAwesomeIcon icon={faGreaterThan} className='icon'/>
                 <h2 className='item'>Articulo 96</h2>
             </div>
             <div>
@@ -19,4 +27,4 @@ function Result(){
     )
 }
 
-export default Result
+export default Results

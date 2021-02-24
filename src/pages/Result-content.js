@@ -1,30 +1,13 @@
 import React from 'react'
+import ContentDetail from "./ContentDetail";
 
 function ResultContent(){
     return(
         <div className='main__result'>
             <div className='main__result-left'>
-                <div className='side-content'>
-                    <p className='item'>Titulo III</p>
-                    <span className='item'>=</span>
-                    <p className='item'>Capitulo 1</p>
-                    <span className='item'>=</span>
-                    <p className='item'>Articulo 96</p>
-                </div>
-                <div className='side-content'>
-                    <p className='item'>Titulo III</p>
-                    <span className='item'>=</span>
-                    <p className='item'>Capitulo 1</p>
-                    <span className='item'>=</span>
-                    <p className='item'>Articulo 96</p>
-                </div>
-                <div className='side-content'>
-                    <p className='item'>Titulo III</p>
-                    <span className='item'>=</span>
-                    <p className='item'>Capitulo 1</p>
-                    <span className='item'>=</span>
-                    <p className='item'>Articulo 96</p>
-                </div>
+                <ContentDetail/>
+                <ContentDetail/>
+                <ContentDetail/>
             </div>
             <div className='main__result-right'>
                 <h2>Titulo III</h2>

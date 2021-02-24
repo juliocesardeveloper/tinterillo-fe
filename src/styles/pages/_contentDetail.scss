@@ -1,0 +1,14 @@
+.side-content {
+  display: flex;
+  font-size: 1.4rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid $border-content;
+  cursor: pointer;
+  &:hover {
+    color: $secundary-color;
+    background-color: $title-color;
+  }
+  .item {
+    margin: auto 1rem auto 0;
+  }
+}

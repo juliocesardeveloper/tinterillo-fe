@@ -1,6 +1,6 @@
 header {
   background-image: url("../../Images/Background.jpg");
-  height: 100vh;
+  // height: 100vh;
 }
 
 body {
@@ -21,8 +21,10 @@ main {
   height: 100vh;
   padding-top: 10%;
   img {
-    // display: inline-block;
+    background-image: url("../../Images/logo.svg");
     margin-left: 50%;
+    width: 20px;
+    height: 20px;
   }
   h1 {
     text-align: center;

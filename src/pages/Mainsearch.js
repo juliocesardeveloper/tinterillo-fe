@@ -1,12 +1,18 @@
-import React, {useState}from 'react'
+import React, {useState, useEffect}from 'react'
 import Results from "./Results";
 import Nav from "./Nav";
 import ResultContent from './Result-content'
+import datos from '../assets/data.json'
 
 function MainSearch() {
     const [show, setShow] = useState(false)
     const [data, setData] = useState('')
     const [change, setChange] = useState(false)
+    const [dataApi, setDataApi] = useState(datos)
+
+    useEffect(()=>{
+        console.log(dataApi)
+    }, [])
 
     const handleClick = () =>{
         setShow(true)
@@ -20,6 +26,7 @@ function MainSearch() {
         setChange(true)
     }
 
+    // console.log(`Este es el nombre: ${dataApi.Title}`)
     if(change){
         return(
             <div>
@@ -30,7 +37,9 @@ function MainSearch() {
                         <h1>THE LAST WORD</h1>
                         <div>
                             <section className="section__input">
-                                <input type="text"/>
+                                <label>
+                                    <input type="text"/>
+                                </label>
                                 {/* <img src={search} className='icon-search'></img> */}
                                 <button type='button'>Buscar</button>
                             </section>
@@ -42,7 +51,7 @@ function MainSearch() {
         )
     }else{
         if (show) {
-            if(data){
+            if(data.length > 0){
                 return(
                     <div>
                         <header>
@@ -52,7 +61,9 @@ function MainSearch() {
                                 <h1>THE LAST WORD</h1>
                                 <div>
                                     <section className="section__input">
+                                    <label>
                                         <input type="text"/>
+                                    </label>
                                         {/* <img src={search} className='icon-search'></img> */}
                                         <button type='button'>Buscar</button>
                                     </section>
@@ -74,7 +85,9 @@ function MainSearch() {
                             <h1>THE LAST WORD</h1>
                             <div>
                                 <section className="section__input">
+                                <label>
                                     <input type="text" onChange={handleChange}/>
+                                </label>
                                     {/* <img src={search} className='icon-search'></img> */}
                                     <button type='button' onClick={handleClick}>Buscar</button>
                                 </section>
@@ -92,7 +105,9 @@ function MainSearch() {
                         <h1>THE LAST WORD</h1>
                         <div>
                             <section className="section__input">
-                                <input type="text" onChange={handleChange}/>
+                                <label>
+                                    <input type="text" onChange={handleChange}/>
+                                </label>
                                 {/* <img src={search} className='icon-search'></img> */}
                                 <button type='button' onClick={handleClick}>Buscar</button>
                             </section>

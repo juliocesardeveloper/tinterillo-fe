@@ -34,7 +34,7 @@ function MainSearch() {
                     <Nav/>
                     <main>
                         <img src="../Images/logo.svg" alt='Logo'/>
-                        <h1>THE LAST WORD</h1>
+                        <h1>TINTERILLO</h1>
                         <div>
                             <section className="section__input">
                                 <label>

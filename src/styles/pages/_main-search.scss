@@ -50,6 +50,13 @@ main {
     outline: none;
     margin-left: 1rem;
   }
+  .icon-search {
+    // color: white;
+    background-color: $secundary-color;
+    cursor: pointer;
+    margin-right: 1.8rem;
+    padding: 0.8rem 1.8rem;
+  }
 }
 
 .section__input:hover {

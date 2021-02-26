@@ -14,9 +14,8 @@ function MainSearch() {
     const [dataApi, setDataApi] = useState(datos)
 
     //Trae los datos de la API local
-    useEffect(()=>{
-        // console.log(dataApi)
-    }, [])
+    // useEffect(()=>{
+    // }, [])
 
     //Muestra el primero componente que tiene las tarjetas de resultados de busqueda
     const handleClick = () =>{
@@ -64,6 +63,9 @@ function MainSearch() {
     //     </>
     // )
     
+
+    //Leer documentacion sobre (Renderizado condicional)
+
     if(change){
         return(
             <div>
@@ -77,8 +79,12 @@ function MainSearch() {
                                 <label>
                                     <input type="text"/>
                                 </label>
-                                <FontAwesomeIcon icon={faSearch} className='icon-search'/>
-                                <button type='button' onClick={handleClick}>Buscar</button>
+                                <FontAwesomeIcon 
+                                    icon={faSearch} 
+                                    className='icon-search'
+                                    onClick={handleClick}
+                                />
+                                {/* <button type='button' onClick={handleClick}>Buscar</button> */}
                             </section>
                         </div>
                     </main>
@@ -101,8 +107,12 @@ function MainSearch() {
                                     <label>
                                         <input type="text"/>
                                     </label>
-                                        <FontAwesomeIcon icon={faSearch} className='icon-search'/>
-                                        <button type='button' onClick={handleClick}>Buscar</button>
+                                        <FontAwesomeIcon 
+                                            icon={faSearch} 
+                                            className='icon-search' 
+                                            onClick={handleClick}
+                                        />
+                                        {/* <button type='button' onClick={handleClick}>Buscar</button> */}
                                     </section>
                                 </div>
                             </main>
@@ -125,8 +135,12 @@ function MainSearch() {
                                 <label>
                                     <input type="text" onChange={handleChange}/>
                                 </label>
-                                    <FontAwesomeIcon icon={faSearch} className='icon-search'/>
-                                    <button type='button' onClick={handleClick}>Buscar</button>
+                                    <FontAwesomeIcon 
+                                        icon={faSearch} 
+                                        className='icon-search' 
+                                        onClick={handleClick}
+                                    />
+                                    {/* <button type='button' onClick={handleClick}>Buscar</button> */}
                                 </section>
                             </div>
                         </main>
@@ -145,8 +159,12 @@ function MainSearch() {
                                 <label>
                                     <input type="text" onChange={handleChange}/>
                                 </label>
-                                <FontAwesomeIcon icon={faSearch} className='icon-search'/>
-                                <button type='button' onClick={handleClick}>Buscar</button>
+                                <FontAwesomeIcon 
+                                    icon={faSearch} 
+                                    className='icon-search' 
+                                    onClick={handleClick}
+                                />
+                                {/* <button type='button' onClick={handleClick}>Buscar</button> */}
                             </section>
                         </div>
                     </main>

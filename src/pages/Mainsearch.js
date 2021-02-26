@@ -3,6 +3,9 @@ import Results from "./Results";
 import Nav from "./Nav";
 import ResultContent from './Result-content'
 import datos from '../assets/data.json'
+import logo from "../Images/logo.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function MainSearch() {
     const [show, setShow] = useState(false)
@@ -10,38 +13,72 @@ function MainSearch() {
     const [change, setChange] = useState(false)
     const [dataApi, setDataApi] = useState(datos)
 
+    //Trae los datos de la API local
     useEffect(()=>{
-        console.log(dataApi)
+        // console.log(dataApi)
     }, [])
 
+    //Muestra el primero componente que tiene las tarjetas de resultados de busqueda
     const handleClick = () =>{
         setShow(true)
     }
 
+    //valida que el campo de busqueda no este vacio
     const handleChange = (event) =>{
         setData(event.target.value)
     }
 
+    //Muestra el segundo componente con los resultados de la busqueda
     const handleClickResults = ()=>{
         setChange(true)
     }
 
-    // console.log(`Este es el nombre: ${dataApi.Title}`)
+    // return(
+    //     <>
+    //     {data.length > 0
+    //         ? show ?
+    //         <div>
+    //             <header>
+    //                 <Nav/>
+    //                 <main>
+    //                     <img src={logo} alt='Logo'/>
+    //                     <h1>THE LAST WORD</h1>
+    //                     <div>
+    //                         <section className="section__input">
+    //                         <label>
+    //                             <input type="text"/>
+    //                         </label>
+    //                             {/* <img src={logo} className='icon-search'></img> */}
+    //                             <button type='button'>Buscar</button>
+    //                         </section>
+    //                     </div>
+    //                 </main>
+    //             </header>
+    //             <Results click={handleClickResults}/>
+    //             <Results click={handleClickResults}/>
+    //             <Results click={handleClickResults}/>
+    //             {change ? <ResultContent/> : null}
+    //         </div>
+    //         : alert('Campo de busqueda vacio')
+    //     }
+    //     </>
+    // )
+    
     if(change){
         return(
             <div>
                 <header>
                     <Nav/>
                     <main>
-                        <img src="../Images/logo.svg" alt='Logo'/>
+                        <img src={logo} alt='Logo'/>
                         <h1>THE LAST WORD</h1>
                         <div>
                             <section className="section__input">
                                 <label>
                                     <input type="text"/>
                                 </label>
-                                {/* <img src={search} className='icon-search'></img> */}
-                                <button type='button'>Buscar</button>
+                                <FontAwesomeIcon icon={faSearch} className='icon-search'/>
+                                <button type='button' onClick={handleClick}>Buscar</button>
                             </section>
                         </div>
                     </main>
@@ -50,22 +87,22 @@ function MainSearch() {
             </div>
         )
     }else{
-        if (show) {
+        if (show){
             if(data.length > 0){
                 return(
                     <div>
                         <header>
                             <Nav/>
                             <main>
-                                <img src='../Images/logo.svg' alt='Logo'/>
+                                <img src={logo} alt='Logo'/>
                                 <h1>THE LAST WORD</h1>
                                 <div>
                                     <section className="section__input">
                                     <label>
                                         <input type="text"/>
                                     </label>
-                                        {/* <img src={search} className='icon-search'></img> */}
-                                        <button type='button'>Buscar</button>
+                                        <FontAwesomeIcon icon={faSearch} className='icon-search'/>
+                                        <button type='button' onClick={handleClick}>Buscar</button>
                                     </section>
                                 </div>
                             </main>
@@ -81,14 +118,14 @@ function MainSearch() {
                     <header>
                         <Nav/>
                         <main>
-                            <img src='../Images/logo.svg' alt='Logo'/>
+                            <img src={logo} alt='Logo'/>
                             <h1>THE LAST WORD</h1>
                             <div>
                                 <section className="section__input">
                                 <label>
                                     <input type="text" onChange={handleChange}/>
                                 </label>
-                                    {/* <img src={search} className='icon-search'></img> */}
+                                    <FontAwesomeIcon icon={faSearch} className='icon-search'/>
                                     <button type='button' onClick={handleClick}>Buscar</button>
                                 </section>
                             </div>
@@ -101,14 +138,14 @@ function MainSearch() {
                 <header>
                     <Nav/>
                     <main>
-                        <img src='../Images/logo.svg' alt='Logo'/>
+                        <img src={logo} alt='Logo'/>
                         <h1>THE LAST WORD</h1>
                         <div>
                             <section className="section__input">
                                 <label>
                                     <input type="text" onChange={handleChange}/>
                                 </label>
-                                {/* <img src={search} className='icon-search'></img> */}
+                                <FontAwesomeIcon icon={faSearch} className='icon-search'/>
                                 <button type='button' onClick={handleClick}>Buscar</button>
                             </section>
                         </div>

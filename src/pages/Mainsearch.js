@@ -9,94 +9,64 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function MainSearch() {
     const [show, setShow] = useState(false)
+    const [style, setStyle] = useState('header')
     const [data, setData] = useState('')
     const [change, setChange] = useState(false)
-    const [dataApi, setDataApi] = useState(datos)
-
-    //Trae los datos de la API local
-    // useEffect(()=>{
-    // }, [])
+    // const [dataApi, setDataApi] = useState(datos)
 
     //Muestra el primero componente que tiene las tarjetas de resultados de busqueda
     const handleClick = () =>{
-        setShow(true)
+        if (data){
+            console.log('soy el que pone al primer componente')
+            setStyle('header__all')
+            setShow(true)
+        }else{
+            alert('Campo de busqueda vacia')
+        }
     }
-
-    //valida que el campo de busqueda no este vacio
+    //Asigna el valor del input al estado "data"
     const handleChange = (event) =>{
         setData(event.target.value)
     }
-
     //Muestra el segundo componente con los resultados de la busqueda
     const handleClickResults = ()=>{
         setChange(true)
     }
-
-    // return(
-    //     <>
-    //     {data.length > 0
-    //         ? show ?
-    //         <div>
-    //             <header>
-    //                 <Nav/>
-    //                 <main>
-    //                     <img src={logo} alt='Logo'/>
-    //                     <h1>THE LAST WORD</h1>
-    //                     <div>
-    //                         <section className="section__input">
-    //                         <label>
-    //                             <input type="text"/>
-    //                         </label>
-    //                             {/* <img src={logo} className='icon-search'></img> */}
-    //                             <button type='button'>Buscar</button>
-    //                         </section>
-    //                     </div>
-    //                 </main>
-    //             </header>
-    //             <Results click={handleClickResults}/>
-    //             <Results click={handleClickResults}/>
-    //             <Results click={handleClickResults}/>
-    //             {change ? <ResultContent/> : null}
-    //         </div>
-    //         : alert('Campo de busqueda vacio')
-    //     }
-    //     </>
-    // )
-    
-
+    //To read oficial documentation about animations for components in React
     //Leer documentacion sobre (Renderizado condicional)
-
     if(change){
         return(
-            <div>
-                <header>
-                    <Nav/>
-                    <main>
-                        <img src={logo} alt='Logo'/>
-                        <h1>THE LAST WORD</h1>
-                        <div>
-                            <section className="section__input">
-                                <label>
-                                    <input type="text"/>
-                                </label>
-                                <FontAwesomeIcon 
-                                    icon={faSearch} 
-                                    className='icon-search'
-                                    onClick={handleClick}
-                                />
-                                {/* <button type='button' onClick={handleClick}>Buscar</button> */}
-                            </section>
-                        </div>
-                    </main>
-                </header>
+            <>
+                <div className={style}>
+                    <header >
+                        <Nav/>
+                        <main>
+                            <img src={logo} alt='Logo'/>
+                            <h1>THE LAST WORD</h1>
+                            <div>
+                                <section className="section__input">
+                                    <label>
+                                        <input type="text"/>
+                                    </label>
+                                    <FontAwesomeIcon 
+                                        icon={faSearch} 
+                                        className='icon-search'
+                                        onClick={handleClick}
+                                    />
+                                    {/* <button type='button' onClick={handleClick}>Buscar</button> */}
+                                </section>
+                            </div>
+                        </main>
+                    </header>
+                </div>
                 <ResultContent/>
-            </div>
+            </>
         )
     }else{
         if (show){
-            if(data.length > 0){
-                return(
-                    <div>
+            return(
+                <>
+                    <div className={style}>
                         <header>
                             <Nav/>
                             <main>
@@ -117,58 +87,37 @@ function MainSearch() {
                                 </div>
                             </main>
                         </header>
-                        <Results click={handleClickResults}/>
-                        <Results click={handleClickResults}/>
-                        <Results click={handleClickResults}/>
                     </div>
-                )
-            }else{
-                alert('Campo de busqueda vacia')
-                return(
-                    <header>
-                        <Nav/>
-                        <main>
-                            <img src={logo} alt='Logo'/>
-                            <h1>THE LAST WORD</h1>
-                            <div>
-                                <section className="section__input">
-                                <label>
-                                    <input type="text" onChange={handleChange}/>
-                                </label>
-                                    <FontAwesomeIcon 
-                                        icon={faSearch} 
-                                        className='icon-search' 
-                                        onClick={handleClick}
-                                    />
-                                    {/* <button type='button' onClick={handleClick}>Buscar</button> */}
-                                </section>
-                            </div>
-                        </main>
-                    </header>
-                )
-            }
+                    <Results click={handleClickResults}/>
+                    <Results click={handleClickResults}/>
+                    <Results click={handleClickResults}/>
+                </>
+            )
         }else{
             return(
-                <header>
-                    <Nav/>
-                    <main>
-                        <img src={logo} alt='Logo'/>
-                        <h1>THE LAST WORD</h1>
-                        <div>
-                            <section className="section__input">
-                                <label>
-                                    <input type="text" onChange={handleChange}/>
-                                </label>
-                                <FontAwesomeIcon 
-                                    icon={faSearch} 
-                                    className='icon-search' 
-                                    onClick={handleClick}
-                                />
-                                {/* <button type='button' onClick={handleClick}>Buscar</button> */}
-                            </section>
-                        </div>
-                    </main>
-                </header>
+                <>
+                    <div className={style}>
+                        <header >
+                            <Nav/>
+                            <main>
+                                <img src={logo} alt='Logo'/>
+                                <h1>THE LAST WORD</h1>
+                                <div>
+                                    <section className="section__input">
+                                        <label>
+                                            <input type="text" onChange={handleChange}/>
+                                        </label>
+                                        <FontAwesomeIcon 
+                                            icon={faSearch} 
+                                            className='icon-search' 
+                                            onClick={handleClick}
+                                        />
+                                    </section>
+                                </div>
+                            </main>
+                        </header>        
+                    </div>
+                </>
             )
         }
     }

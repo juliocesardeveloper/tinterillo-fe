@@ -1,6 +1,6 @@
 import React, {useState, useEffect}from 'react'
 import Login from '../components/Login';
-import Modal from '../components/Modal';
+import {ModalForm} from '../components/ModalForm';
 import Register from '../components/Register';
 import Results from "./Results";
 import Nav from "./Nav";
@@ -150,7 +150,7 @@ function MainSearch() {
                         </button>
                     </div>
                     {showModal &&
-                        <Modal onClose={handleClose}>
+                        <ModalForm>
                             {
                             isRegistered
                                 ?
@@ -158,7 +158,7 @@ function MainSearch() {
                                 :
                                 <Register />
                             }
-                        </Modal>}
+                        </ModalForm>}
                 </>
             )
         }

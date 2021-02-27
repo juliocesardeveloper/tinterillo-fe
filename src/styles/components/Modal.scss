@@ -1,6 +1,6 @@
 @import '../variables.scss';
 
-.modal {
+.modal-fondo {
   background-color: rgba(0, 0, 0, .3);
   backdrop-filter: blur(5px);
   position: fixed;
@@ -10,27 +10,48 @@
   top: 0;
 }
 
-.modal-content {
+/* Modal */
+.ReactModalPortal > div{
+  opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: opacity .2s ease-in-out;
+  z-index: 999;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.modal {
   background: $light-color;
   border-radius: 28px;
-  display: flex;
-  flex-direction: column;
-  height: 624px;
-  margin: 10vh auto;
+  display: inline;
+  // display: flex;
+  // flex-direction: column;
+  max-height: 624px;
+  outline: none;
   padding: 10px;
   position: relative;
-  width: 650px;
-  .close-btn-container {
-    justify-self: flex-end;
-    .close-btn {
-      background-color: $dark-color;
-      border: none;
-      border-radius: 5px;
-      color: $light-color;
+  max-width: 650px;
+  // .close-btn-container {
+  //   justify-self: flex-end;
+  //   .close-btn {
+  //     background-color: $dark-color;
+  //     border: none;
+  //     border-radius: 5px;
+  //     color: $light-color;
       
-      margin: 0;
-      outline: none;
-    }
-  }
+  //     margin: 0;
+  //     outline: none;
+  //   }
 }
 

@@ -1,4 +1,7 @@
 import React, {useState, useEffect}from 'react'
+import Login from '../components/Login';
+import Modal from '../components/Modal';
+import Register from '../components/Register';
 import Results from "./Results";
 import Nav from "./Nav";
 import ResultContent from './Result-content'
@@ -9,6 +12,9 @@ function MainSearch() {
     const [data, setData] = useState('')
     const [change, setChange] = useState(false)
     const [dataApi, setDataApi] = useState(datos)
+    const isLogged = false
+    const isRegistered = true
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(()=>{
         console.log(dataApi)
@@ -25,6 +31,18 @@ function MainSearch() {
     const handleClickResults = ()=>{
         setChange(true)
     }
+
+    const handleRegister = () => {
+        if (!isRegistered) return setShowModal(true)
+      }
+    
+      const handleLogin = () => {
+        if (!isLogged) return setShowModal(true)
+      }
+    
+      const handleClose = () => {
+        setShowModal(false)
+      }
 
     // console.log(`Este es el nombre: ${dataApi.Title}`)
     if(change){
@@ -98,26 +116,46 @@ function MainSearch() {
             }
         }else{
             return(
-                <header>
-                    <Nav/>
-                    <main>
-                        <img src='../Images/logo.svg' alt='Logo'/>
-                        <h1>THE LAST WORD</h1>
-                        <div>
-                            <section className="section__input">
-                                <label>
-                                    <input type="text" onChange={handleChange}/>
-                                </label>
-                                {/* <img src={search} className='icon-search'></img> */}
-                                <button type='button' onClick={handleClick}>Buscar</button>
-                            </section>
-                        </div>
-                    </main>
-                </header>
+                <>
+                    <header>
+                        <Nav/>
+                        <main>
+                            <img src='../Images/logo.svg' alt='Logo'/>
+                            <h1>THE LAST WORD</h1>
+                            <div>
+                                <section className="section__input">
+                                    <label>
+                                        <input type="text" onChange={handleChange}/>
+                                    </label>
+                                    {/* <img src={search} className='icon-search'></img> */}
+                                    <button type='button' onClick={handleClick}>Buscar</button>
+                                </section>
+                            </div>
+                        </main>
+                    </header>
+                    <div>
+                        <button className="register-button" onClick={handleRegister}>
+                        Registro
+                        </button>
+                        <button className="login-button" onClick={handleLogin}>
+                        Iniciar sesión
+                        </button>
+                    </div>
+                    {showModal &&
+                        <Modal onClose={handleClose}>
+                            {
+                            isRegistered
+                                ?
+                                <Login />
+                                :
+                                <Register />
+                            }
+                        </Modal>}
+                </>
             )
         }
     }
-
+    
     
 }
 

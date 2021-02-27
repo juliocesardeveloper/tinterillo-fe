@@ -1,0 +1,50 @@
+@import '../variables.scss';
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .Register-form {
+    display: flex;
+    flex-direction: column;
+    width: 563px;
+    input {
+      align-self: center;
+      border: none;
+      background-color: $light-color;
+      border-bottom: 1px solid $dark-color;
+      font-size: 30px;
+      color: $dark-color;
+      margin: 30px;
+      outline: none;
+      &::placeholder {
+        color: $dark-color;
+      }
+      width: 100%;
+    }
+    .form-title {
+      h1 {
+        color: $dark-color !important;
+
+      }
+      margin-bottom: 100px;
+    }
+    .form-btn {
+      align-self: center;
+      background-color: $dark-color;
+      border: none;
+      border-radius: 18px;
+      color: $light-color;
+      font-size: 36px;
+      height: 74px;
+      margin-top: 20px;
+      outline: none;
+      width: 511px;
+      &:hover {
+        background-color: #B47EA3;
+        color: $dark-color;
+      }
+    }
+  }
+}

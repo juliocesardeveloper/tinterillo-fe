@@ -13,6 +13,7 @@ import './styles/variables.scss'
 //   document.getElementById('root')
 // );
 
+// ReactDOM.render(<Animation />, document.getElementById('root'))
 ReactDOM.render(<Mainsearch />, document.getElementById('root'))
 
 // If you want to start measuring performance in your app, pass a function

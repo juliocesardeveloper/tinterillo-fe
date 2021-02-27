@@ -1,4 +1,7 @@
 import React, {useState, useEffect}from 'react'
+import Login from '../components/Login';
+import Modal from '../components/Modal';
+import Register from '../components/Register';
 import Results from "./Results";
 import Nav from "./Nav";
 import ResultContent from './Result-content'
@@ -14,6 +17,14 @@ export default function MainSearch() {
     const [style, setStyle] = useState('header')
     const [data, setData] = useState('')
     const [change, setChange] = useState(false)
+    const [dataApi, setDataApi] = useState(datos)
+    const isLogged = false
+    const isRegistered = true
+    const [showModal, setShowModal] = useState(false);
+
+    useEffect(()=>{
+        console.log(dataApi)
+    }, [])
     // const [dataApi, setDataApi] = useState(datos)
 
     //Muestra el primero componente que tiene las tarjetas de resultados de busqueda
@@ -34,6 +45,19 @@ export default function MainSearch() {
     const handleClickResults = ()=>{
         setChange(true)
     }
+
+    const handleRegister = () => {
+        if (!isRegistered) return setShowModal(true)
+      }
+    
+      const handleLogin = () => {
+        if (!isLogged) return setShowModal(true)
+      }
+    
+      const handleClose = () => {
+        setShowModal(false)
+      }
+
     //To read oficial documentation about animations for components in React
     return(
         <>

@@ -2,12 +2,14 @@ import React, {useState, useEffect}from 'react'
 import Results from "./Results";
 import Nav from "./Nav";
 import ResultContent from './Result-content'
-import datos from '../assets/data.json'
+// import datos from '../assets/data.json'
 import logo from "../Images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { library, config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
 
-function MainSearch() {
+export default function MainSearch() {
     const [show, setShow] = useState(false)
     const [style, setStyle] = useState('header')
     const [data, setData] = useState('')
@@ -33,96 +35,38 @@ function MainSearch() {
         setChange(true)
     }
     //To read oficial documentation about animations for components in React
-    //Leer documentacion sobre (Renderizado condicional)
-    if(change){
-        return(
-            <>
-                <div className={style}>
-                    <header >
-                        <Nav/>
-                        <main>
-                            <img src={logo} alt='Logo'/>
-                            <h1>THE LAST WORD</h1>
-                            <div>
-                                <section className="section__input">
-                                    <label>
-                                        <input type="text"/>
-                                    </label>
-                                    <FontAwesomeIcon 
-                                        icon={faSearch} 
-                                        className='icon-search'
-                                        onClick={handleClick}
-                                    />
-                                    {/* <button type='button' onClick={handleClick}>Buscar</button> */}
-                                </section>
-                            </div>
-                        </main>
-                    </header>
-                </div>
-                <ResultContent/>
-            </>
-        )
-    }else{
-        if (show){
-            return(
-                <>
-                    <div className={style}>
-                        <header>
-                            <Nav/>
-                            <main>
-                                <img src={logo} alt='Logo'/>
-                                <h1>THE LAST WORD</h1>
-                                <div>
-                                    <section className="section__input">
-                                    <label>
-                                        <input type="text"/>
-                                    </label>
-                                        <FontAwesomeIcon 
-                                            icon={faSearch} 
-                                            className='icon-search' 
-                                            onClick={handleClick}
-                                        />
-                                        {/* <button type='button' onClick={handleClick}>Buscar</button> */}
-                                    </section>
-                                </div>
-                            </main>
-                        </header>
-                    </div>
-                    <Results click={handleClickResults}/>
-                    <Results click={handleClickResults}/>
-                    <Results click={handleClickResults}/>
-                </>
-            )
-        }else{
-            return(
-                <>
-                    <div className={style}>
-                        <header >
-                            <Nav/>
-                            <main>
-                                <img src={logo} alt='Logo'/>
-                                <h1>THE LAST WORD</h1>
-                                <div>
-                                    <section className="section__input">
-                                        <label>
-                                            <input type="text" onChange={handleChange}/>
-                                        </label>
-                                        <FontAwesomeIcon 
-                                            icon={faSearch} 
-                                            className='icon-search' 
-                                            onClick={handleClick}
-                                        />
-                                    </section>
-                                </div>
-                            </main>
-                        </header>        
-                    </div>
-                </>
-            )
-        }
-    }
-
-    
+    return(
+        <>
+            <div className={style}>
+                <header>
+                    <Nav/>
+                    <main>
+                        <img src={logo} alt='Logo'/>
+                        <h1>THE LAST WORD</h1>
+                        <div>
+                            <section className="section__input">
+                            <label>
+                                <input type="text" onChange={handleChange}/>
+                            </label>
+                                <FontAwesomeIcon 
+                                    icon={faSearch} 
+                                    className='icon-search' 
+                                    onClick={handleClick}
+                                />
+                            </section>
+                        </div>
+                    </main>
+                </header>
+            </div>
+            {
+                change ? <ResultContent/> 
+                : show && 
+                    <>
+                        <Results click={handleClickResults}/>
+                        <Results click={handleClickResults}/>
+                        <Results click={handleClickResults}/>
+                    </>
+            }
+        </>
+    )
 }
-
-export default MainSearch

@@ -5,12 +5,14 @@ import Register from '../components/Register';
 import Results from "./Results";
 import Nav from "./Nav";
 import ResultContent from './Result-content'
-import datos from '../assets/data.json'
+// import datos from '../assets/data.json'
 import logo from "../Images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { library, config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
 
-function MainSearch() {
+export default function MainSearch() {
     const [show, setShow] = useState(false)
     const [style, setStyle] = useState('header')
     const [data, setData] = useState('')
@@ -57,6 +59,7 @@ function MainSearch() {
       }
 
     //To read oficial documentation about animations for components in React
+<<<<<<< HEAD
     //Leer documentacion sobre (Renderizado condicional)
     if(change){
         return(
@@ -163,6 +166,40 @@ function MainSearch() {
             )
         }
     }
+=======
+    return(
+        <>
+            <div className={style}>
+                <header>
+                    <Nav/>
+                    <main>
+                        <img src={logo} alt='Logo'/>
+                        <h1>THE LAST WORD</h1>
+                        <div>
+                            <section className="section__input">
+                            <label>
+                                <input type="text" onChange={handleChange}/>
+                            </label>
+                                <FontAwesomeIcon 
+                                    icon={faSearch} 
+                                    className='icon-search' 
+                                    onClick={handleClick}
+                                />
+                            </section>
+                        </div>
+                    </main>
+                </header>
+            </div>
+            {
+                change ? <ResultContent/> 
+                : show && 
+                    <>
+                        <Results click={handleClickResults}/>
+                        <Results click={handleClickResults}/>
+                        <Results click={handleClickResults}/>
+                    </>
+            }
+        </>
+    )
+>>>>>>> d3bbfd22cf3386046d151bd329626b31e63e2b11
 }
-
-export default MainSearch

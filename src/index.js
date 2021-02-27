@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import Mainsearch from './pages/Mainsearch'
 import reportWebVitals from './reportWebVitals';
 import './styles/variables.scss'
-import Animation from "./pages/Animation";
 
 // ReactDOM.render(
 //   <React.StrictMode>

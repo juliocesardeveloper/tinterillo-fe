@@ -17,14 +17,15 @@ export default function MainSearch() {
     const [style, setStyle] = useState('header')
     const [data, setData] = useState('')
     const [change, setChange] = useState(false)
-    const [dataApi, setDataApi] = useState(datos)
+    // const [dataApi, setDataApi] = useState(datos)
     const isLogged = false
     const isRegistered = true
     const [showModal, setShowModal] = useState(false);
 
-    useEffect(()=>{
-        console.log(dataApi)
-    }, [])
+    // useEffect(()=>{
+    //     console.log(dataApi)
+    // }, [])
+
     // const [dataApi, setDataApi] = useState(datos)
 
     //Muestra el primero componente que tiene las tarjetas de resultados de busqueda
@@ -49,17 +50,16 @@ export default function MainSearch() {
     const handleRegister = () => {
         if (!isRegistered) return setShowModal(true)
       }
-    
+
       const handleLogin = () => {
         if (!isLogged) return setShowModal(true)
       }
-    
+
       const handleClose = () => {
         setShowModal(false)
       }
 
     //To read oficial documentation about animations for components in React
-<<<<<<< HEAD
     //Leer documentacion sobre (Renderizado condicional)
     if(change){
         return(
@@ -75,8 +75,8 @@ export default function MainSearch() {
                                     <label>
                                         <input type="text"/>
                                     </label>
-                                    <FontAwesomeIcon 
-                                        icon={faSearch} 
+                                    <FontAwesomeIcon
+                                        icon={faSearch}
                                         className='icon-search'
                                         onClick={handleClick}
                                     />
@@ -104,9 +104,9 @@ export default function MainSearch() {
                                     <label>
                                         <input type="text"/>
                                     </label>
-                                        <FontAwesomeIcon 
-                                            icon={faSearch} 
-                                            className='icon-search' 
+                                        <FontAwesomeIcon
+                                            icon={faSearch}
+                                            className='icon-search'
                                             onClick={handleClick}
                                         />
                                         {/* <button type='button' onClick={handleClick}>Buscar</button> */}
@@ -166,40 +166,4 @@ export default function MainSearch() {
             )
         }
     }
-=======
-    return(
-        <>
-            <div className={style}>
-                <header>
-                    <Nav/>
-                    <main>
-                        <img src={logo} alt='Logo'/>
-                        <h1>THE LAST WORD</h1>
-                        <div>
-                            <section className="section__input">
-                            <label>
-                                <input type="text" onChange={handleChange}/>
-                            </label>
-                                <FontAwesomeIcon 
-                                    icon={faSearch} 
-                                    className='icon-search' 
-                                    onClick={handleClick}
-                                />
-                            </section>
-                        </div>
-                    </main>
-                </header>
-            </div>
-            {
-                change ? <ResultContent/> 
-                : show && 
-                    <>
-                        <Results click={handleClickResults}/>
-                        <Results click={handleClickResults}/>
-                        <Results click={handleClickResults}/>
-                    </>
-            }
-        </>
-    )
->>>>>>> d3bbfd22cf3386046d151bd329626b31e63e2b11
 }

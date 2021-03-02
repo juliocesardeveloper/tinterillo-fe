@@ -1,4 +1,3 @@
-@import '../variables.scss';
 
 .form-container {
   display: flex;
@@ -41,6 +40,7 @@
       &:hover {
         background-color: #B47EA3;
         color: $dark-color;
+        cursor: pointer;
       }
     }
   }

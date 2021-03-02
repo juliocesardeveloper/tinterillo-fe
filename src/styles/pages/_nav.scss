@@ -8,4 +8,15 @@
       padding: 0 20px;
     }
   }
+  .nav-button {
+    background: none;
+    border: none;
+    color: $light-color;
+    font-family: $font;
+    outline: none;
+    &:hover {
+      color: $secundary-color;
+      cursor: pointer;
+    }
+  }
 }

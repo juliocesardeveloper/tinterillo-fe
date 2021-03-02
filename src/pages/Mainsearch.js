@@ -18,15 +18,14 @@ export default function MainSearch() {
     const [style, setStyle] = useState('header')
     const [data, setData] = useState('')
     const [change, setChange] = useState(false)
-    const history = useHistory()
+    history = useHistory()
     // const [dataApi, setDataApi] = useState(datos)
-    const isLogged = false
-    const isRegistered = true
-    const [showModal, setShowModal] = useState(false);
 
+    const isRegistered = false
     // useEffect(()=>{
     //     console.log(dataApi)
     // }, [])
+
     // const [dataApi, setDataApi] = useState(datos)
 
     //Muestra el primero componente que tiene las tarjetas de resultados de busqueda

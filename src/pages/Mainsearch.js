@@ -1,7 +1,7 @@
-import React, {useState, useEffect}from 'react'
-import Login from '../components/Login';
-import {ModalForm} from '../components/ModalForm';
-import Register from '../components/Register';
+import React, { useState, useEffect }from 'react'
+import { Login } from '../components/Login';
+import { ModalForm } from '../components/ModalForm';
+import { Register } from '../components/Register';
 import Results from "./Results";
 import Nav from "./Nav";
 import ResultContent from './Result-content'
@@ -18,10 +18,8 @@ export default function MainSearch() {
     const [data, setData] = useState('')
     const [change, setChange] = useState(false)
     // const [dataApi, setDataApi] = useState(datos)
-    const isLogged = false
-    const isRegistered = true
-    const [showModal, setShowModal] = useState(false);
 
+    const isRegistered = false
     // useEffect(()=>{
     //     console.log(dataApi)
     // }, [])
@@ -46,18 +44,6 @@ export default function MainSearch() {
     const handleClickResults = ()=>{
         setChange(true)
     }
-
-    const handleRegister = () => {
-        if (!isRegistered) return setShowModal(true)
-      }
-
-      const handleLogin = () => {
-        if (!isLogged) return setShowModal(true)
-      }
-
-      const handleClose = () => {
-        setShowModal(false)
-      }
 
     //To read oficial documentation about animations for components in React
     //Leer documentacion sobre (Renderizado condicional)
@@ -144,24 +130,15 @@ export default function MainSearch() {
                             </main>
                         </header>
                     </div>
-                    <div>
-                        <button className="register-button" onClick={handleRegister}>
-                        Registro
-                        </button>
-                        <button className="login-button" onClick={handleLogin}>
-                        Iniciar sesión
-                        </button>
-                    </div>
-                    {showModal &&
-                        <ModalForm>
-                            {
-                            isRegistered
-                                ?
-                                <Login />
-                                :
-                                <Register />
-                            }
-                        </ModalForm>}
+                    <ModalForm>
+                        {
+                        isRegistered
+                            ?
+                            <Login />
+                            :
+                            <Register />
+                        }
+                    </ModalForm>
                 </>
             )
         }

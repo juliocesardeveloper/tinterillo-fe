@@ -1,7 +1,26 @@
 import React from 'react'
-import '../styles/components/Login.scss'
+import { useDispatch } from 'react-redux'
+import { startLogin } from '../actions/auth'
+import { useForm } from '../hooks/useForm'
 
-const Login = () => {
+export const Login = () => {
+
+  const dispatch = useDispatch();
+
+  const [ formLoginValues, handleLoginInputChange, reset ] = useForm({
+    lEmail: 'johan-avila@outlook.com',
+    lPassword: 'Password3'
+   });
+
+   const { lEmail, lPassword } = formLoginValues;
+
+   const handleLogin = ( e ) => {
+    e.preventDefault();
+
+    dispatch( startLogin( lEmail, lPassword ) );
+
+   }
+
   return (
     <>
       <div className="form-container">
@@ -9,14 +28,26 @@ const Login = () => {
           <h1>INICIO DE SESIÓN</h1>
         </div>
 
-        <form className="Login-form">
-          <input type="email" placeholder="Email"/>
-          <input type="password" placeholder="Contraseña"/>
-          <button className="form-btn login-btn" >Iniciar sesión</button>
+        <form onSubmit={ handleLogin } className="Login-form">
+          <input
+            type="email"
+            placeholder="Email"
+            name="lEmail"
+            value={ lEmail }
+            onChange={ handleLoginInputChange }
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            name="lPassword"
+            value={ lPassword }
+            onChange={ handleLoginInputChange }
+          />
+          <button type="submit" className="form-btn login-btn" >
+            Iniciar sesión
+          </button>
         </form>
       </div>
     </>
   )
 }
-
-export default Login

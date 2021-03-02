@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Home from './pages/Home';
 import Mainsearch from './pages/Mainsearch';
 import reportWebVitals from './reportWebVitals';
 import './styles/variables.scss'
+import { TinterilloApp } from './TinterilloApp';
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -14,7 +14,7 @@ import './styles/variables.scss'
 // );
 
 // ReactDOM.render(<Animation />, document.getElementById('root'))
-ReactDOM.render(<Mainsearch />, document.getElementById('root'))
+ReactDOM.render(<TinterilloApp />, document.getElementById('root'))
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

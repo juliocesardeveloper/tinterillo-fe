@@ -1,4 +1,3 @@
-@import '../variables.scss';
 
 .modal-fondo {
   background-color: rgba(0, 0, 0, .3);
@@ -19,7 +18,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  transition: opacity .2s ease-in-out;
+  transition: opacity .3s ease-in-out;
   z-index: 999;
 }
 
@@ -35,23 +34,10 @@
   background: $light-color;
   border-radius: 28px;
   display: inline;
-  // display: flex;
-  // flex-direction: column;
   max-height: 624px;
   outline: none;
   padding: 10px;
-  position: relative;
+  position: absolute;
   max-width: 650px;
-  // .close-btn-container {
-  //   justify-self: flex-end;
-  //   .close-btn {
-  //     background-color: $dark-color;
-  //     border: none;
-  //     border-radius: 5px;
-  //     color: $light-color;
-      
-  //     margin: 0;
-  //     outline: none;
-  //   }
 }
 

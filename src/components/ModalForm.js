@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
 import Modal from 'react-modal';
-import '../styles/components/Modal.scss'
-
+import { useSelector, useDispatch } from 'react-redux';
+import { uiCloseModal } from '../actions/ui';
 
 const customStyles = {
   content : {
@@ -19,17 +17,19 @@ Modal.setAppElement('#root')
 
 export const ModalForm = ( {children} ) => {
 
-  const [isOpen, setIsOpen] = useState(true)
+  const { modalOpen } = useSelector( state => state.ui );
+  const dispatch = useDispatch();
 
   const closeModal = () => {
-    setIsOpen(false);
+    dispatch( uiCloseModal() )
   }
 
   return (
     <Modal
-      isOpen={ isOpen }
+      isOpen={ modalOpen }
       onRequestClose={closeModal}
       style={customStyles}
+      closeTimeoutMS={ 300 }
       contentLabel="Example Modal"
       className="modal"
       overlayClassName="modal-fondo"
@@ -37,25 +37,4 @@ export const ModalForm = ( {children} ) => {
       {children}
     </Modal>
   )
-//   return <div className='modal'>
-//     <div className='modal-content'>
-//       <div className="close-btn-container">
-//         <button className='close-btn' onClick={onClose}>X</button>
-//       </div>
-//       <div>
-//         {children}
-//       </div>
-//     </div>
-    
-//   </div>
-// }
-
-// export default function ModalPortal ({ children, onClose }) {
-//   return ReactDOM.createPortal(
-//     <ModalForm onClose={onClose}>
-//       {children}
-//     </ModalForm>,
-//     document.getElementById('modal')
-//   )
-  
 }

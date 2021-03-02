@@ -10,7 +10,7 @@ import ResultContent from './Result-content'
 import logo from "../Images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { library, config } from '@fortawesome/fontawesome-svg-core'
+import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
 
 export default function MainSearch() {
@@ -18,7 +18,7 @@ export default function MainSearch() {
     const [style, setStyle] = useState('header')
     const [data, setData] = useState('')
     const [change, setChange] = useState(false)
-    history = useHistory()
+    const history = useHistory()
     // const [dataApi, setDataApi] = useState(datos)
 
     const isRegistered = false
@@ -48,17 +48,19 @@ export default function MainSearch() {
         setChange(true)
     }
 
+
+    
     //metodos para el login y registro de usuario
     const handleRegister = () => {
-        if (!isRegistered) return setShowModal(true)
+        // if (!isRegistered) return setShowModal(true)
       }
     
       const handleLogin = () => {
-        if (!isLogged) return setShowModal(true)
+        // if (!isLogged) return setShowModal(true)
       }
     
       const handleClose = () => {
-        setShowModal(false)
+        // setShowModal(false)
       }
       //Fin metodos para el login y registro de usuarios
 

@@ -14,12 +14,9 @@
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-<<<<<<< HEAD
     "react-router-dom": "^5.2.0",
-=======
     "react-modal": "^3.12.1",
     "react-redux": "^7.2.2",
->>>>>>> eb6220eb75e8c017650a63908a58994b1e5f78aa
     "react-scripts": "4.0.2",
     "react-spring": "^8.0.27",
     "redux": "^4.0.5",

@@ -1,11 +1,11 @@
 import React, {useState, useEffect}from 'react'
 import { useHistory } from 'react-router-dom'
-import Login from '../components/Login';
-import Modal from '../components/Modal';
-import Register from '../components/Register';
-import Results from "./Results";
-import Nav from "./Nav";
-import ResultContent from './Result-content'
+// import Login from '../components/Login';
+// import Modal from '../components/Modal';
+// import Register from '../components/Register';
+import Results from "../components/results";
+import Nav from "../components/Nav";
+import ResultContent from '../components/Result-content'
 // import datos from '../assets/data.json'
 import logo from "../Images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,15 +52,15 @@ export default function MainSearch() {
     
     //metodos para el login y registro de usuario
     const handleRegister = () => {
-        // if (!isRegistered) return setShowModal(true)
+        if (!isRegistered) return setShowModal(true)
       }
     
       const handleLogin = () => {
-        // if (!isLogged) return setShowModal(true)
+        if (!isLogged) return setShowModal(true)
       }
     
       const handleClose = () => {
-        // setShowModal(false)
+        setShowModal(false)
       }
       //Fin metodos para el login y registro de usuarios
 
@@ -97,6 +97,16 @@ export default function MainSearch() {
                         <Results click={handleClickResults}/>
                     </>
             }
+            <ModalForm>
+                {
+                isRegistered
+                    ?
+                    <Login />
+                    :
+                    <Register />
+                }
+            </ModalForm>
+
         </>
     )
 }

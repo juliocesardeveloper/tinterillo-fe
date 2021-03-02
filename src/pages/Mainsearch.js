@@ -1,4 +1,5 @@
 import React, {useState, useEffect}from 'react'
+import { useHistory } from 'react-router-dom'
 import Login from '../components/Login';
 import Modal from '../components/Modal';
 import Register from '../components/Register';
@@ -17,22 +18,24 @@ export default function MainSearch() {
     const [style, setStyle] = useState('header')
     const [data, setData] = useState('')
     const [change, setChange] = useState(false)
-    const [dataApi, setDataApi] = useState(datos)
+    const history = useHistory()
+    // const [dataApi, setDataApi] = useState(datos)
     const isLogged = false
     const isRegistered = true
     const [showModal, setShowModal] = useState(false);
 
-    useEffect(()=>{
-        console.log(dataApi)
-    }, [])
+    // useEffect(()=>{
+    //     console.log(dataApi)
+    // }, [])
     // const [dataApi, setDataApi] = useState(datos)
 
     //Muestra el primero componente que tiene las tarjetas de resultados de busqueda
-    const handleClick = () =>{
+    const handleClick = (e) =>{
+        e.preventDefault();
         if (data){
-            console.log('soy el que pone al primer componente')
             setStyle('header__all')
             setShow(true)
+            history.push('/search')
         }else{
             alert('Campo de busqueda vacia')
         }
@@ -46,6 +49,7 @@ export default function MainSearch() {
         setChange(true)
     }
 
+    //metodos para el login y registro de usuario
     const handleRegister = () => {
         if (!isRegistered) return setShowModal(true)
       }
@@ -57,11 +61,12 @@ export default function MainSearch() {
       const handleClose = () => {
         setShowModal(false)
       }
+      //Fin metodos para el login y registro de usuarios
 
     //To read oficial documentation about animations for components in React
     return(
         <>
-            <div className={style}>
+            <form className={style} onSubmit={handleClick}>
                 <header>
                     <Nav/>
                     <main>
@@ -74,14 +79,14 @@ export default function MainSearch() {
                             </label>
                                 <FontAwesomeIcon 
                                     icon={faSearch} 
-                                    className='icon-search' 
-                                    onClick={handleClick}
+                                    className='icon-search'
+                                    type='submit'
                                 />
                             </section>
                         </div>
                     </main>
                 </header>
-            </div>
+            </form>
             {
                 change ? <ResultContent/> 
                 : show && 

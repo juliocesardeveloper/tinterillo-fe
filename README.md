@@ -4,14 +4,11 @@ This project is the frontend repo from the Swat Neo (by Platzi Master) project.
 
 Tinterillo App is a web app where you can search everything about the 1991 colombian political constitution.
 
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
-
 
 In the project directory, you can run:
 
@@ -68,13 +65,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/c
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-#Install Icons
+### Install Icons in the Project
 
-The Icons of the project fueron dowloaded at the web page fortawesome (https://www.npmjs.com/package/@fortawesome/react-fontawesome). Next, We show how to install the pakage:
+The Icons of the project were downloaded at the web page fortawesome (https://www.npmjs.com/package/@fortawesome/react-fontawesome). Next, We show how to install the pakage:
 
-[npm i --save @fortawesome/fontawesome-svg-core  @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons]
+[npm i --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons]
 
-#Use Icons on components
+### Use Icons on components
 
 We need to import the next:
 

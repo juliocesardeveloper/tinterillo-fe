@@ -7,8 +7,8 @@ $color-text: #313131;
 $secundary-color: #2d9cdb;
 $border-content: #acacac;
 $icon-color: #f5ebe0;
-$dark-color: #3C2334;
-$light-color: #FBF9FA;
+$dark-color: #3c2334;
+$light-color: #fbf9fa;
 
 //Genericos
 * {
@@ -23,10 +23,10 @@ html {
 
 // Componentes
 @import "./pages/main-search";
-@import "./pages/reults";
-@import "./pages/nav";
-@import "./pages/result-content";
-@import "./pages/contentDetail";
+@import "./components/reults";
+@import "./components/nav";
+@import "./components/result-content";
+@import "./components/contentDetail";
 @import "./components/login";
 @import "./components/modalForm";
 @import "./components/register";

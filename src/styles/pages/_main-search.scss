@@ -58,11 +58,10 @@ main {
     margin-right: 1.8rem;
     padding: 0.8rem 1.8rem;
   }
-}
-
-.section__input:hover {
-  box-shadow: 0 1px 6px 0 #20212447;
-  border-color: #dfe1e500;
+  &:hover {
+    box-shadow: 0 1px 6px 0 #20212447;
+    border-color: #dfe1e500;
+  }
 }
 
 .header__all {

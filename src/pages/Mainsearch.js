@@ -19,7 +19,7 @@ export default function MainSearch() {
     const [change, setChange] = useState(false)
     // const [dataApi, setDataApi] = useState(datos)
 
-    const isRegistered = false
+    const isRegistered = true
     // useEffect(()=>{
     //     console.log(dataApi)
     // }, [])

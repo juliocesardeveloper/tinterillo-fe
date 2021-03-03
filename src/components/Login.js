@@ -8,8 +8,8 @@ export const Login = () => {
   const dispatch = useDispatch();
 
   const [ formLoginValues, handleLoginInputChange, reset ] = useForm({
-    lEmail: 'johan-avila@outlook.com',
-    lPassword: 'Password3'
+    lEmail: 'juliocesar@hotmail.com',
+    lPassword: 'Password1'
    });
 
    const { lEmail, lPassword } = formLoginValues;

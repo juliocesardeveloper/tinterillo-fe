@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { startLogin } from '../actions/auth'
 import { useForm } from '../hooks/useForm'
 
-export const Login = () => {
+const Login = () => {
 
   const dispatch = useDispatch();
 
@@ -51,3 +51,4 @@ export const Login = () => {
     </>
   )
 }
+ export default Login

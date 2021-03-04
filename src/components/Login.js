@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { startLogin } from '../actions/auth'
 import { useForm } from '../hooks/useForm'
 
+
 export const Login = () => {
 
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export const Login = () => {
 
         <form onSubmit={ handleLogin } className="Login-form">
           <input
-            type="email"
+            type="text"
             placeholder="Email"
             name="lEmail"
             value={ lEmail }

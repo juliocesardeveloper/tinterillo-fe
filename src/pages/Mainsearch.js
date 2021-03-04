@@ -17,7 +17,7 @@ export default function MainSearch() {
     const history = useHistory()
     const [dataApi, setDataApi] = useState([])
 
-    const isRegistered = false
+    const isRegistered = true
     const URL = 'https://searcher-col.herokuapp.com/api/es/search?search=pluralista&index=constitucion'
     
     useEffect(() => {

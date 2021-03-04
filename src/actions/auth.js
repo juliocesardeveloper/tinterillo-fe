@@ -1,4 +1,4 @@
-import { fetchSinToken } from "../helpers/fetch"
+import { fetchSinToken, fetchConToken } from "../helpers/fetch"
 import { types } from '../types/types'
 import Swal from 'sweetalert2'
 
@@ -8,7 +8,7 @@ export const startLogin = ( email, password ) => {
 
   return async() => {
 
-    const resp = await fetchSinToken( 'auth/sign-in', { email, password }, 'POST' );
+    const resp = await fetchSinToken('auth/sign-in', { email, password }, 'POST');
     const body = await resp.json();
 
     console.log(body);

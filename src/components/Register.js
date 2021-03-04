@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import { startRegister } from '../actions/auth'
 import { useForm } from '../hooks/useForm'
 
-const Register = () => {
+export const Register = () => {
 
   const dispatch = useDispatch();
 
@@ -73,5 +73,3 @@ const Register = () => {
     </>
   )
 }
-
-export default Register

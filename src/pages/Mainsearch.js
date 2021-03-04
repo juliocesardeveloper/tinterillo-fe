@@ -1,16 +1,13 @@
-import React, {useState, useEffect}from 'react'
+import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-// import Login from '../components/Login';
-// import Modal from '../components/Modal';
-// import Register from '../components/Register';
-import Results from "../components/results";
+import {Login} from '../components/Login';
+import {ModalForm} from '../components/ModalForm';
+import {Register} from '../components/Register';
+import Results from "../components/Results";
 import Nav from "../components/Nav";
 import ResultContent from '../components/Result-content'
 import logo from "../Images/logo.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { config } from '@fortawesome/fontawesome-svg-core'
-config.autoAddCss = false
+import { FaSearch } from 'react-icons/fa';
 
 export default function MainSearch() {
     const [show, setShow] = useState(false)
@@ -21,19 +18,15 @@ export default function MainSearch() {
     const [dataApi, setDataApi] = useState([])
 
     const isRegistered = false
-
     const URL = 'https://searcher-col.herokuapp.com/api/es/search?search=pluralista&index=constitucion'
     
     useEffect(() => {
         fetch(URL)
             .then(response => response.json())
-            .then(res => console.log(res))
             .then(res => setDataApi(res))
     }, [])
 
-    // const [dataApi, setDataApi] = useState(datos)
-
-    //Muestra el primero componente que tiene las tarjetas de resultados de busqueda
+    //Muestra el primer componente que tiene las tarjetas de resultados de busqueda
     const handleSubmit = (e) =>{
         e.preventDefault();
         if (data){
@@ -53,23 +46,6 @@ export default function MainSearch() {
         setChange(true)
     }
 
-
-    
-    //metodos para el login y registro de usuario
-    // const handleRegister = () => {
-    //     if (!isRegistered) return setShowModal(true)
-    //   }
-    
-    //   const handleLogin = () => {
-    //     if (!isLogged) return setShowModal(true)
-    //   }
-    
-    //   const handleClose = () => {
-    //     setShowModal(false)
-    //   }
-      //Fin metodos para el login y registro de usuarios
-
-    //To read oficial documentation about animations for components in React
     return(
         <>
             <form className={style} onSubmit={handleSubmit}>
@@ -77,35 +53,30 @@ export default function MainSearch() {
                     <Nav/>
                     <main>
                         <img src={logo} alt='Logo'/>
-                        <h1>THE LAST WORD</h1>
+                        <h1>TINTERILLO</h1>
                         <div>
                             <section className="section__input">
                             <label>
                                 <input type="text" onChange={handleChange}/>
                             </label>
-                                <FontAwesomeIcon 
-                                    icon={faSearch} 
-                                    className='icon-search'
-                                    type='submit'
-                                />
+                                <button className='icon-search' type='submit'>
+                                    <FaSearch/>
+                                </button>
                             </section>
                         </div>
                     </main>
                 </header>
             </form>
             {
-                change ? <ResultContent/> 
+                change ? <ResultContent info={dataApi}/> 
                 : show && 
-                dataApi.body.hits.hits.map(content => {
-                    return <Results key={content._id} click={handleClickResults} infoApi={content}/>
-                })
-                    // <>
-                    //     <Results click={handleClickResults}/>
-                    //     <Results click={handleClickResults}/>
-                    //     <Results click={handleClickResults}/>
-                    // </>
+                    dataApi.body.hits.hits.map(info => {
+                        return(
+                            <Results key={info._id} click={handleClickResults} info={info}/>
+                        )
+                    })
             }
-            {/* <ModalForm>
+            <ModalForm>
                 {
                 isRegistered
                     ?
@@ -113,7 +84,7 @@ export default function MainSearch() {
                     :
                     <Register />
                 }
-            </ModalForm> */}
+            </ModalForm>
 
         </>
     )

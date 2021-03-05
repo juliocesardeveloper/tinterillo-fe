@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import btoa from 'btoa'
 
 const baseUrl = 'https://searcher-col.herokuapp.com/api';

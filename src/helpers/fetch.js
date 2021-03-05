@@ -9,7 +9,7 @@ const fetchSinToken = async( endpoint, data, method = 'GET' ) => {
 
 
   const url = `${ baseUrl }/${ endpoint }`;
-  const token = localStorage.getItem('token') || '';
+  
 
 
   if ( method === 'GET' ) {
@@ -24,22 +24,21 @@ const fetchSinToken = async( endpoint, data, method = 'GET' ) => {
       },
       body: JSON.stringify( data, null, 2 )
       });
-  }
-
+    }
 }
 
 const fetchConToken = ( endpoint, data, method = 'GET' ) => {
 
   const url = `${ baseUrl }/${ endpoint }`;
-  const token = localStorage.getItem('token') || '';
+  
 
   if ( method === 'GET' ) {
     return fetch( url, {
       method,
       headers: {
-        'Authorization': `Basic ${btoa(`${data.email}:${data.password}`)}`,
-        'Content-type': 'application/json; charset=utf-8',
-        'Set-Cookie': token
+        // 'Authorization': `Basic ${btoa(`${data.email}:${data.password}`)}`,
+        // 'Content-type': 'application/json; charset=utf-8',
+        'Set-Cookie': '<cookie-name>=<cookie-value>; HttpOnly'
       }
     });
   } else {
@@ -48,12 +47,12 @@ const fetchConToken = ( endpoint, data, method = 'GET' ) => {
       headers: {
         'Authorization': `Basic ${btoa(`${data.email}:${data.password}`)}`,
         'Content-type': 'application/json; charset=utf-8',
-        // 'Set-Cookie': token
+        'Set-Cookie': '<cookie-name>=<cookie-value>; HttpOnly'
       },
-      body: JSON.stringify( data )
+      body: JSON.stringify( data, null, 2 )
     });
   }
-
+  
 }
 
 export {

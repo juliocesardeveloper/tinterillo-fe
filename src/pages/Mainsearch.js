@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-import {Login} from '../components/Login';
-import {ModalForm} from '../components/ModalForm';
-import {Register} from '../components/Register';
+// import {Login} from '../components/Login';
+// import {ModalForm} from '../components/ModalForm';
+// import {Register} from '../components/Register';
 import Results from "../components/Results";
 import Nav from "../components/Nav";
 import ResultContent from '../components/Result-content'
@@ -17,7 +17,6 @@ export default function MainSearch() {
     const history = useHistory()
     const [dataApi, setDataApi] = useState([])
 
-    const isRegistered = true
     const URL = 'https://searcher-col.herokuapp.com/api/es/search?search=pluralista&index=constitucion'
     
     useEffect(() => {
@@ -76,7 +75,7 @@ export default function MainSearch() {
                         )
                     })
             }
-            <ModalForm>
+            {/* <ModalForm>
                 {
                 isRegistered
                     ?
@@ -84,7 +83,7 @@ export default function MainSearch() {
                     :
                     <Register />
                 }
-            </ModalForm>
+            </ModalForm> */}
 
         </>
     )

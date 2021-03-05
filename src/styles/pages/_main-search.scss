@@ -123,3 +123,11 @@ main {
     }
   }
 }
+
+.swal-text {
+  color: $dark-color;
+  &:hover {
+    color: $secundary-color;
+  }
+}
+

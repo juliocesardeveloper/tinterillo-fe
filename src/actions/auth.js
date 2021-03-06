@@ -7,10 +7,9 @@ export const startLogin = ( email, password ) => {
   return async( dispatch ) => {
     const resp = await fetchSinToken( 'auth/sign-in', { email, password }, 'POST' );
     const body = await resp.json();
-    
-    console.log(body);
-    console.log(Cookies.get('token', { domain: '/'}));
 
+    console.log(body);
+    console.log(Cookies.get());
 
     if ( body.message === "This user exist." ) {
       localStorage.setItem( 'token', body.token );
@@ -36,6 +35,7 @@ export const startRegister = ( email, password, name ) => {
   return async( dispatch ) => {
     const resp = await fetchSinToken( 'auth/sign-up', { email, password, name }, 'POST' );
     const body = await resp.json();
+    console.log(body.message);
 
     if ( body.message === "This user exist." ) {
       localStorage.setItem( 'token', body.token );
@@ -45,6 +45,14 @@ export const startRegister = ( email, password, name ) => {
         uid: body.user._id,
         name: body.user.name
       }))
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Felicitaciones, te has registrado satisfactoriamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
     } else {
       Swal.fire({
         icon: 'error',
@@ -56,9 +64,9 @@ export const startRegister = ( email, password, name ) => {
   }
 }
 
-export const startChecking = () => {
+export const startChecking = ( email, password ) => {
   return async(dispatch) => {
-    const resp = await fetchConToken( 'user/:userId' );
+    const resp = await fetchSinToken( 'auth/sign-in', { email, password } );
     const body = await resp.json();
 
     if ( body.message === "This user exist." ) {

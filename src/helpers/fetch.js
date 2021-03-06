@@ -1,16 +1,16 @@
-
+import axios from 'axios'
 import btoa from 'btoa'
 
 const baseUrl = 'https://searcher-col.herokuapp.com/api';
-
-
 
 const fetchSinToken = async( endpoint, data, method = 'GET' ) => {
 
 
   const url = `${ baseUrl }/${ endpoint }`;
   
-
+  // axios.post( url, { withCredentials: true } ).then((res) => {
+  //   console.log(res.data);
+  // });
 
   if ( method === 'GET' ) {
     return fetch( url );
@@ -38,7 +38,7 @@ const fetchConToken = ( endpoint, data, method = 'GET' ) => {
       headers: {
         // 'Authorization': `Basic ${btoa(`${data.email}:${data.password}`)}`,
         // 'Content-type': 'application/json; charset=utf-8',
-        'Set-Cookie': '<cookie-name>=<cookie-value>; HttpOnly'
+        'Set-Cookie': 'token=token.value; Path=/; HttpOnly; Secure'
       }
     });
   } else {

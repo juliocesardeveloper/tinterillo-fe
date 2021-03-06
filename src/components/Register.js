@@ -9,7 +9,7 @@ export const Register = () => {
   const dispatch = useDispatch();
 
 
-  const [ formRegisterValues, handleRegisterInputChange, reset ] = useForm({
+  const [ formRegisterValues, handleRegisterInputChange ] = useForm({
     rName: 'Johan',
     rEmail: 'johan@outlook.com',
     rPassword1: 'Password3',

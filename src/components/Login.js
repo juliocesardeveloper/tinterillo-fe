@@ -44,7 +44,7 @@ export const Login = () => {
             value={ lPassword }
             onChange={ handleLoginInputChange }
           />
-          <button type="submit" className="form-btn login-btn" >
+          <button className="form-btn login-btn" >
             Iniciar sesión
           </button>
         </form>

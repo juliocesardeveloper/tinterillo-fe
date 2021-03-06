@@ -8,6 +8,7 @@ import Nav from "../components/Nav";
 import ResultContent from '../components/Result-content'
 import logo from "../Images/logo.svg";
 import { FaSearch } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 export default function MainSearch() {
     const [show, setShow] = useState(false)
@@ -33,7 +34,7 @@ export default function MainSearch() {
             setShow(true)
             // history.push('/search')
         }else{
-            alert('Campo de busqueda vacia')
+            console.log('Campo de busqueda vacia');
         }
     }
     //Asigna el valor del input al estado "data"

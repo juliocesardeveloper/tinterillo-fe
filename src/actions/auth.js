@@ -1,19 +1,18 @@
-import { fetchSinToken, fetchConToken } from "../helpers/fetch"
+import { fetchSinToken, fetchConToken, fetchAut } from "../helpers/fetch"
 import { types } from '../types/types'
 import Cookies from 'js-cookie'
 import Swal from 'sweetalert2'
 
 export const startLogin = ( email, password ) => {
   return async( dispatch ) => {
-    const resp = await fetchSinToken( 'auth/sign-in', { email, password }, 'POST' );
-    const body = await resp.json();
+    const resp = await fetchAut( 'auth/sign-in', { email, password }, 'POST' );
+    const body = await resp
 
     console.log(body);
-    console.log(Cookies.get());
 
-    if ( body.message === "This user exist." ) {
-      localStorage.setItem( 'token', body.token );
-      localStorage.setItem( 'token-init-date', new Date().getTime() );
+    if ( body.statusText === "OK" ) {
+      // localStorage.setItem( 'token', body.token );
+      // localStorage.setItem( 'token-init-date', new Date().getTime() );
 
       dispatch( login({
         uid: body.user._id,
@@ -33,13 +32,13 @@ export const startLogin = ( email, password ) => {
 
 export const startRegister = ( email, password, name ) => {
   return async( dispatch ) => {
-    const resp = await fetchSinToken( 'auth/sign-up', { email, password, name }, 'POST' );
+    const resp = await fetchAut( 'auth/sign-up', { email, password, name }, 'POST' );
     const body = await resp.json();
     console.log(body.message);
 
     if ( body.message === "This user exist." ) {
-      localStorage.setItem( 'token', body.token );
-      localStorage.setItem( 'token-init-date', new Date().getTime() );
+      // localStorage.setItem( 'token', body.token );
+      // localStorage.setItem( 'token-init-date', new Date().getTime() );
 
       dispatch( login({
         uid: body.user._id,
@@ -66,12 +65,12 @@ export const startRegister = ( email, password, name ) => {
 
 export const startChecking = ( email, password ) => {
   return async(dispatch) => {
-    const resp = await fetchSinToken( 'auth/sign-in', { email, password } );
+    const resp = await fetchAut( 'auth/sign-in', { email, password } );
     const body = await resp.json();
 
     if ( body.message === "This user exist." ) {
-      localStorage.setItem( 'token', body.token );
-      localStorage.setItem( 'token-init-date', new Date().getTime() );
+      // localStorage.setItem( 'token', body.token );
+      // localStorage.setItem( 'token-init-date', new Date().getTime() );
 
       dispatch( login({
         uid: body.user._id,

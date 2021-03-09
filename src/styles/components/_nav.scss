@@ -20,3 +20,14 @@
     }
   }
 }
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tinterillo-logo {
+  height: 40px;
+  margin-right: 20px;
+}

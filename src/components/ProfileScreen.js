@@ -1,9 +1,11 @@
 import React from 'react'
 
-export const ProfileScreen = () => {
+import Nav from './Nav'
+
+export const ProfileScreen = ({ children }) => {
   return (
-    <div>
-      <h1>Pagina de perfil</h1>
+    <div className="profile-main-container">
+      <Nav />
     </div>
   )
 }

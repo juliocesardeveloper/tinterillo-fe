@@ -6,17 +6,16 @@ import Swal from 'sweetalert2'
 export const startLogin = ( email, password ) => {
   return async( dispatch ) => {
     const resp = await fetchAut( 'auth/sign-in', { email, password }, 'POST' );
-    const body = await resp
+    const body = await resp.json();
+
 
     console.log(body);
 
-    if ( body.statusText === "OK" ) {
-      // localStorage.setItem( 'token', body.token );
-      // localStorage.setItem( 'token-init-date', new Date().getTime() );
+    if ( body.ok ) {
 
       dispatch( login({
-        uid: body.user._id,
-        name: body.user.name
+        uid: body._id,
+        name: body.name
       }))
 
     } else {
@@ -34,15 +33,12 @@ export const startRegister = ( email, password, name ) => {
   return async( dispatch ) => {
     const resp = await fetchAut( 'auth/sign-up', { email, password, name }, 'POST' );
     const body = await resp.json();
-    console.log(body.message);
 
-    if ( body.message === "This user exist." ) {
-      // localStorage.setItem( 'token', body.token );
-      // localStorage.setItem( 'token-init-date', new Date().getTime() );
+    if ( body.ok ) {
 
       dispatch( login({
-        uid: body.user._id,
-        name: body.user.name
+        uid: body._id,
+        name: body.name
       }))
 
       Swal.fire({
@@ -68,13 +64,11 @@ export const startChecking = ( email, password ) => {
     const resp = await fetchAut( 'auth/sign-in', { email, password } );
     const body = await resp.json();
 
-    if ( body.message === "This user exist." ) {
-      // localStorage.setItem( 'token', body.token );
-      // localStorage.setItem( 'token-init-date', new Date().getTime() );
+    if ( body.ok ) {
 
       dispatch( login({
-        uid: body.user._id,
-        name: body.user.name
+        uid: body._id,
+        name: body.name
       }))
     } else {
       Swal.fire({

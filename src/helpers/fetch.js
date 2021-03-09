@@ -4,7 +4,7 @@ import btoa from 'btoa'
 const baseUrl = 'https://searcher-col.herokuapp.com/api';
 
 
-const fetchAut = async( endpoint, data, method ) => {
+const fetchAut = async( endpoint, data, method) => {
 
   const url = `${ baseUrl }/${ endpoint }`;
 
@@ -14,11 +14,12 @@ const fetchAut = async( endpoint, data, method ) => {
       'Authorization': `Basic ${btoa(`${data.email}:${data.password}`)}`,
     },
     responseType: 'json'
-  }).then(function(response) {
-    console.log(response.statusText);
+  }).then(response => {
+    console.log(response);
   }).catch(function(error) {
     console.log(error);
   });
+  
 
 }
 

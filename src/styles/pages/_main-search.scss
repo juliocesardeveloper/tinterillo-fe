@@ -1,0 +1,133 @@
+.header {
+  background-image: url("../../Images/Background.jpg");
+  // height: 100vh;
+}
+
+body {
+  font-size: 1.8rem;
+  // color: $title-color;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $title-color;
+}
+
+main {
+  height: 100vh;
+  padding-top: 10%;
+  text-align: center;
+  img {
+    width: 8rem;
+    height: 8rem;
+  }
+  h1 {
+    text-align: center;
+    font-size: 6rem;
+    color: $title-color;
+  }
+}
+
+.section__input {
+  margin: 0 auto;
+  border: 1px solid #dfe1e5;
+  border-radius: 2.4rem;
+  height: 4.6rem;
+  background-color: white;
+  width: 58rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+
+  input {
+    width: 48rem;
+    height: 3.5rem;
+    border: none;
+    outline: none;
+    margin-left: 1rem;
+  }
+  .icon-search {
+    color: white;
+    background-color: $secundary-color;
+    border: none;
+    cursor: pointer;
+    height: 4.6rem;
+    border-radius: 0 30px 30px 0;
+    padding: 1rem 1.8rem;
+    &:hover {
+      background-color: #3ba2dd;
+    }
+    &:active {
+      border-color: none;
+      border: none;
+    }
+    &:focus {
+      border-color: none;
+      border: none;
+    }
+  }
+  &:hover {
+    box-shadow: 0 1px 6px 0 #20212447;
+    border-color: #dfe1e500;
+  }
+}
+
+.header__all {
+  background-image: url("../../Images/Background.jpg");
+  main {
+    height: 35rem;
+    padding-top: 6%;
+    text-align: center;
+    img {
+      width: 7rem;
+      height: 7rem;
+      transition: 0.8s;
+    }
+    h1 {
+      text-align: center;
+      font-size: 5rem;
+      transition: 0.8s;
+    }
+    transition: 0.8s;
+    .section__input {
+      margin: 0 auto;
+      border: 1px solid #dfe1e5;
+      border-radius: 2.4rem;
+      height: 4rem;
+      background-color: white;
+      width: 48rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+
+      input {
+        width: 38rem;
+        height: 3.5rem;
+        border: none;
+        outline: none;
+        margin-left: 1rem;
+      }
+      .icon-search {
+        height: 4rem;
+        background-color: $secundary-color;
+        cursor: pointer;
+        padding: 0.8rem 1.8rem;
+      }
+      transition: 0.8s;
+    }
+  }
+}
+
+.swal-text {
+  color: $dark-color;
+  &:hover {
+    color: $secundary-color;
+  }
+}
+

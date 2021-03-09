@@ -1,0 +1,43 @@
+
+.modal-fondo {
+  background-color: rgba(0, 0, 0, .3);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+/* Modal */
+.ReactModalPortal > div{
+  opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: opacity .3s ease-in-out;
+  z-index: 999;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.modal {
+  background: $light-color;
+  border-radius: 28px;
+  display: inline;
+  max-height: 624px;
+  outline: none;
+  padding: 10px;
+  position: absolute;
+  max-width: 650px;
+}
+

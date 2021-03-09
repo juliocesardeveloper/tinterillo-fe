@@ -1,0 +1,19 @@
+.main__result {
+  height: 100vh;
+  color: $color-text;
+  display: flex;
+  &-left {
+    width: 65%;
+    border-right: 1px solid $border-content;
+  }
+  &-right {
+    text-align: center;
+    padding: 3rem;
+    * {
+      padding-bottom: 3rem;
+    }
+    p {
+      text-align: left;
+    }
+  }
+}

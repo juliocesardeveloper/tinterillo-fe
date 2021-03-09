@@ -1,0 +1,33 @@
+.nav__content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 0 20px;
+  &-sesion {
+    display: flex;
+    li {
+      padding: 0 20px;
+    }
+  }
+  .nav-button {
+    background: none;
+    border: none;
+    color: $light-color;
+    font-family: $font;
+    outline: none;
+    &:hover {
+      color: $secundary-color;
+      cursor: pointer;
+    }
+  }
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tinterillo-logo {
+  height: 40px;
+  margin-right: 20px;
+}

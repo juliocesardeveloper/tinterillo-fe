@@ -1,3 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 
-$font: 'Oswald', sans-serif;
+// Variables
+$font: "Oswald", sans-serif;
+$title-color: #fff4e8;
+$color-text: #313131;
+$secundary-color: #2d9cdb;
+$border-content: #acacac;
+$icon-color: #f5ebe0;
+$dark-color: #3c2334;
+$light-color: #fbf9fa;
+$background: url("../Images/Background.jpg");
+
+//Genericos
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+// Componentes
+@import "./components/contentDetail";
+@import "./components/login";
+@import "./components/modalForm";
+@import "./components/nav";
+@import "./components/profileScreen";
+@import "./components/register";
+@import "./components/results";
+@import "./components/result-content";
+@import "./pages/main-search";

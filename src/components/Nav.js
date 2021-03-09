@@ -15,7 +15,7 @@ export default function Nav(){
 
 	// let register = <Register />
 	// let login = <Login />
-		const logged = true
+		const logged = false
     const [register, setRegister] = useState(false)
     const [login, setLogin] = useState(false)
 

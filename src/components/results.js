@@ -1,7 +1,7 @@
 import React from 'react'
 // import iconos
 import { FiArrowRight } from 'react-icons/fi';
-import { FcLikePlaceholder } from 'react-icons'
+import { FcLikePlaceholder } from 'react-icons/fc';
 
 function Results({click, info}){
 

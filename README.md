@@ -1,8 +1,8 @@
 # Tinterillo App
 
-This project is the frontend repo from the Swat Neo (by Platzi Master) project.
+### This project is the frontend repo from the Swat Neo (by Platzi Master) program.
 
-Tinterillo App is a web app where you can search everything about the 1991 colombian political constitution.
+### Tinterillo App is a web app where you can search everything about the 1991 colombian political constitution.
 
 # Getting Started with Create React App
 

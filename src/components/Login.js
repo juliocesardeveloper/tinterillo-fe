@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { startLogin } from '../actions/auth'
 import { useForm } from '../hooks/useForm'
+import { FaUserAlt } from 'react-icons/fa'
+import { RiLockPasswordFill } from 'react-icons/ri'
 
 
 export const Login = () => {
@@ -25,25 +27,31 @@ export const Login = () => {
   return (
     <>
       <div className="form-container">
-        <div className="form-title Login-title">
-          <h1>INICIO DE SESIÓN</h1>
+        <div className="form-title-container">
+          <h1 className="form-title Login-title">INICIO DE SESIÓN</h1>
         </div>
 
         <form onSubmit={ handleLogin } className="Login-form">
-          <input
-            type="text"
-            placeholder="Email"
-            name="lEmail"
-            value={ lEmail }
-            onChange={ handleLoginInputChange }
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            name="lPassword"
-            value={ lPassword }
-            onChange={ handleLoginInputChange }
-          />
+          <div className="input-container">
+            <FaUserAlt className="input-icon" />
+            <input
+              type="text"
+              placeholder="Email"
+              name="lEmail"
+              value={ lEmail }
+              onChange={ handleLoginInputChange }
+            />
+          </div>
+          <div className="input-container">
+            <RiLockPasswordFill className="input-icon" />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              name="lPassword"
+              value={ lPassword }
+              onChange={ handleLoginInputChange }
+            />
+          </div>
           <button className="form-btn login-btn" >
             Iniciar sesión
           </button>

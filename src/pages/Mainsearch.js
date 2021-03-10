@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-import Results from "../components/Results";
+import Results from "../components/results";
 import Nav from "../components/Nav";
 import ResultContent from '../components/Result-content'
 import logo from "../Images/logo-tinterillo-light-color.png";

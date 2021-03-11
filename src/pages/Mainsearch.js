@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-import Results from "../components/results";
+import Results from "../components/Results";
 import Nav from "../components/Nav";
 import ResultContent from '../components/Result-content'
 import logo from "../Images/logo-tinterillo-light-color.png";
@@ -53,9 +53,9 @@ export default function MainSearch() {
             <h1>TINTERILLO APP</h1>
             <div>
               <section className="section__input">
-              <label>
-                <input type="text" onChange={handleChange}/>
-              </label>
+                <label>
+                  <input type="text" onChange={handleChange}/>
+                </label>
                 <button className='icon-search' type='submit'>
                   <FaSearch/>
                 </button>

@@ -14,10 +14,10 @@ export const Register = () => {
 
 
   const [ formRegisterValues, handleRegisterInputChange ] = useForm({
-    rName: 'Johan',
-    rEmail: 'johan@outlook.com',
-    rPassword1: 'Password3',
-    rPassword2: 'Password3'
+    rName: '',
+    rEmail: '',
+    rPassword1: '',
+    rPassword2: ''
    });
 
    const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues;

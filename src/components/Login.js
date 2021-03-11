@@ -11,8 +11,8 @@ export const Login = () => {
   const dispatch = useDispatch();
 
   const [ formLoginValues, handleLoginInputChange, reset ] = useForm({
-    lEmail: 'juliocesar@hotmail.com',
-    lPassword: 'Password1'
+    lEmail: '',
+    lPassword: ''
    });
 
    const { lEmail, lPassword } = formLoginValues;

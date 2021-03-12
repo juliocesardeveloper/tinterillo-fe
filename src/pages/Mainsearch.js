@@ -11,7 +11,8 @@ import initialState from '../initialState';
 export default function MainSearch() {
   const [show, setShow] = useState(false)
   const [style, setStyle] = useState('header')
-  const [data, setData] = useState('')
+  const [data, setData] = useState('') // input
+  const [dataDos, setDataDos] = useState(""); // input
   const [change, setChange] = useState(false)
   const history = useHistory()
   const [dataApi, setDataApi] = useState({})
@@ -19,23 +20,19 @@ export default function MainSearch() {
   // const URL = 'https://searcher-col.herokuapp.com/api/es/search?search=pluralista&index=constitucion'
   const URL = 'http://localhost:4000/api/es/search'
 
-  const GetDataApi = (serched)=>{
-    useEffect(() => {
-      fetch(`${URL}?search=${serched}&index=constitucion_politica_de_colombia`)
+  useEffect(() => {
+    fetch(`${URL}?search=${data}&index=constitucion_politica_de_colombia`)
       .then(response => response.json())
       .then(res => {
-        res.body.hits.hits.length > 0 
-        ? setDataApi(res)
-        : setDataApi(initialState)
+        res.body.hits.hits.length > 0
+          ? setDataApi(res)
+          : setDataApi(initialState)
       })
       .catch(err => {
         console.log('[ERROR]');
       })
-    }, [])
-  }
-  
-  GetDataApi("Derechos")
-  
+  }, [dataDos])
+
   //Muestra el primer componente que tiene las tarjetas de resultados de busqueda
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,6 +40,7 @@ export default function MainSearch() {
     if (data) {
       setStyle('header__all')
       setShow(true)
+      setDataDos(data)
       // history.push('/search')
     } else {
       console.log('Campo de busqueda vacia');

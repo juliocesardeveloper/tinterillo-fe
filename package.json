@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "axios-hooks": "^2.3.0",
     "btoa": "^1.2.1",
+    "firebase": "^8.3.0",
     "js-cookie": "^2.2.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
@@ -28,6 +29,7 @@
     "styled-components": "^5.2.1",
     "swal": "^0.1.0",
     "sweetalert2": "^10.15.5",
+    "validator": "^13.5.2",
     "web-vitals": "^1.1.0"
   },
   "scripts": {

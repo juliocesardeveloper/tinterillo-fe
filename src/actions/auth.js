@@ -1,31 +1,108 @@
 import { fetchSinToken, fetchConToken, fetchAut } from "../helpers/fetch"
+import { firebase, googleAuthProvider } from '../firebase/firebaseConfig'
 import { types } from '../types/types'
-import Cookies from 'js-cookie'
 import Swal from 'sweetalert2'
+import { uiFinishLoading, uiIsLogged, uiIsLoggedOut, uiStartLoading } from "./ui"
 
-export const startLogin = ( email, password ) => {
-  return async( dispatch ) => {
-    const resp = await fetchAut( 'auth/sign-in', { email, password }, 'POST' );
-    const body = await resp.json();
+export const startLoginEmailPassword = (email, password) => {
+  return (dispatch) => {
 
+    dispatch( uiStartLoading() );
 
-    console.log(body);
-
-    if ( body.ok ) {
-
-      dispatch( login({
-        uid: body._id,
-        name: body.name
-      }))
-
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: '¿Ya te registraste?',
-        footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
+    firebase.auth().signInWithEmailAndPassword( email, password )
+      .then( ({ user }) => {
+        dispatch( login( user.uid, user.displayName ));
+        dispatch( uiFinishLoading() );
+        // dispatch( uiIsLogged() );
       })
+      .catch( e => {
+        console.log(e);
+        dispatch( uiFinishLoading() );
+      })
+  }
+}
+
+export const startGoogleLogin = () => {
+  return ( dispatch ) => {
+
+    firebase.auth().signInWithPopup( googleAuthProvider )
+      .then( ({ user }) => {
+        dispatch(
+          login( user.uid, user.displayName )
+        )
+        // dispatch( uiIsLogged() )
+      })
+
+  }
+
+}
+
+export const login = ( uid, displayName ) => ({
+
+    type: types.authLogin,
+    payload: {
+      uid,
+      displayName
     }
+
+})
+
+export const startLogout = () => {
+  return async( dispatch ) => {
+    await firebase.auth().signOut();
+    dispatch( authLogout() )
+    // dispatch( uiIsLoggedOut() )
+  }
+}
+
+export const authLogout = () => ({
+  type: types.authLogout
+})
+
+
+
+
+
+// export const startLogin = ( email, password ) => {
+//   return async( dispatch ) => {
+//     const resp = await fetchAut( 'auth/sign-in', { email, password }, 'POST' );
+//     const body = await resp.json();
+
+
+//     console.log(body);
+
+//     if ( body.ok ) {
+
+//       dispatch( login({
+//         uid: body._id,
+//         name: body.name
+//       }))
+
+//     } else {
+//       Swal.fire({
+//         icon: 'error',
+//         title: 'Oops...',
+//         text: '¿Ya te registraste?',
+//         footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
+//       })
+//     }
+//   }
+// }
+
+export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
+  return ( dispatch ) => {
+    firebase.auth().createUserWithEmailAndPassword( email, password )
+    .then( async({ user }) => {
+
+      await user.updateProfile({ displayName: name });
+
+      dispatch(
+        login( user.uid, user.displayName )
+      )
+    })
+    .catch( e => {
+      console.log(e);
+    })
   }
 }
 
@@ -59,32 +136,32 @@ export const startRegister = ( email, password, name ) => {
   }
 }
 
-export const startChecking = ( email, password ) => {
-  return async(dispatch) => {
-    const resp = await fetchAut( 'auth/sign-in', { email, password } );
-    const body = await resp.json();
+// export const startChecking = ( email, password ) => {
+//   return async(dispatch) => {
+//     const resp = await fetchAut( 'auth/sign-in', { email, password } );
+//     const body = await resp.json();
 
-    if ( body.ok ) {
+//     if ( body.ok ) {
 
-      dispatch( login({
-        uid: body._id,
-        name: body.name
-      }))
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Ya te registraste antes',
-        footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
-      })
-      dispatch( checkingFinish() );
-    }
-  }
-}
+//       dispatch( login({
+//         uid: body._id,
+//         name: body.name
+//       }))
+//     } else {
+//       Swal.fire({
+//         icon: 'error',
+//         title: 'Oops...',
+//         text: 'Ya te registraste antes',
+//         footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
+//       })
+//       dispatch( checkingFinish() );
+//     }
+//   }
+// }
 
-const checkingFinish = () => ({ type: types.authCheckingFinish })
+// const checkingFinish = () => ({ type: types.authCheckingFinish })
 
-const login = ( user ) => ({
-  type: types.authLogin,
-  payload: user
-})
+// const login = ( user ) => ({
+//   type: types.authLogin,
+//   payload: user
+// })

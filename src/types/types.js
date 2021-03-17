@@ -2,6 +2,14 @@ export const types = {
   uiOpenModal: '[ui] Open modal',
   uiOpenModalRegister: '[ui] Open Modal Register',
   uiCloseModal: '[ui] Close modal',
+  uiIsLogged: '[ui] Is Logged',
+  uiIsLoggedOut: '[ui] Is Logged Out',
+
+  uiSetError: '[ui] Set Error',
+  uiRemoveError: '[ui] Remove Error',
+
+  uiStartLoading: '[ui] Start Loading',
+  uiFinishLoading: '[ui] Finish Loading',
 
   eventSetActive: '[event] Set Active',
   eventAddNew: '[event] Add New',

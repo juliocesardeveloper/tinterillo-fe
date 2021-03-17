@@ -1,0 +1,18 @@
+.selected-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-left: 2rem;
+
+  .like-btn-container {
+    align-self: flex-end;
+    .like-btn {
+      border: none;
+      background: none;
+      outline: none;
+    }
+    
+  }
+
+  
+}

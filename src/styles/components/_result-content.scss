@@ -2,18 +2,14 @@
   height: 100vh;
   color: $color-text;
   display: flex;
+  align-items: center;
+  justify-content: center;
   &-left {
-    width: 65%;
-    border-right: 1px solid $border-content;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
   }
   &-right {
-    text-align: center;
-    padding: 3rem;
-    * {
-      padding-bottom: 3rem;
-    }
-    p {
-      text-align: left;
-    }
+    
   }
 }

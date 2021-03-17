@@ -1,13 +1,15 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import Swal from 'sweetalert2'
-import { startRegister } from '../actions/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { startRegister, startRegisterWithEmailPasswordName } from '../actions/auth'
 import { useForm } from '../hooks/useForm'
+import validator from 'validator'
+import { uiCloseModal, uiRemoveError, uiSetError } from '../actions/ui'
+import { BiErrorAlt } from 'react-icons/bi'
 
 export const Register = () => {
 
   const dispatch = useDispatch();
-
+  const { msgError,  } = useSelector(state => state.ui);
 
   const [ formRegisterValues, handleRegisterInputChange ] = useForm({
     rName: 'Johan',
@@ -21,13 +23,26 @@ export const Register = () => {
    const handleRegister = ( e ) => {
     e.preventDefault();
 
-    if ( rPassword1 !== rPassword2 ) {
-      return Swal.fire('Error', 'Las contraseñas deben ser iguales', 'error');
+    if ( isFormValid() ) {
+      dispatch( startRegisterWithEmailPasswordName( rEmail, rPassword1, rName ) )
+      dispatch( uiCloseModal() )
     }
 
-    console.log("?");
-    dispatch( startRegister( rEmail, rPassword1, rName ) );
+   }
 
+   const isFormValid = () => {
+     if ( rName.trim().length === 0 ) {
+       dispatch( uiSetError('Escribe un nombre') );
+       return false;
+     } else if ( !validator.isEmail( rEmail ) ) {
+       dispatch( uiSetError('El email no es válido') );
+       return false;
+     } else if ( rPassword1 !== rPassword2 || rPassword1 < 5 ) {
+       dispatch( uiSetError('El password debe tener al menos 6 caracteres y coincidir con el password de confirmación') );
+       return false
+     }
+     dispatch( uiRemoveError() );
+     return true;
    }
 
   return (
@@ -38,6 +53,17 @@ export const Register = () => {
         </div>
 
         <form onSubmit={ handleRegister } className="Register-form">
+
+          {
+            msgError &&
+            (
+              <div className="msg-alert">
+                <BiErrorAlt />
+                <p className="msg-alert__p">{ msgError }</p>
+              </div>
+            )
+          }
+
           <input
             type="text"
             placeholder="Nombre completo"
@@ -66,6 +92,7 @@ export const Register = () => {
             value={ rPassword2 }
             onChange={ handleRegisterInputChange }
           />
+
           <button type="submit" className="form-btn register-btn">Registrarme</button>
         </form>
 

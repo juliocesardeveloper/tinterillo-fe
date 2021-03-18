@@ -23,4 +23,12 @@ export const types = {
   authStartRegister: '[auth] Start register',
   authStartTokenRenew: '[auth] Start token renew',
   authLogout: '[auth] Logout',
+
+  articlesActive: '[Articles] Set Active Article',
+  articlesLoad: '[Articles] Load Articles',
+  articlesLike: '[Articles] Save Favorite Article',
+  articlesDislike: '[Articles] Delete Favorite Article',
+  articlesLogoutCleaning: '[Articles] Logout Cleaning',
+  articlesClean: '[Articles] Clean Articles',
+
 }

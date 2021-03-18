@@ -131,3 +131,17 @@ main {
   }
 }
 
+.result-content__main {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-container {
+  // display: flex;
+  // flex-direction: column;
+  width: 70%;
+}
+

@@ -2,11 +2,26 @@ import React from 'react'
 // import iconos
 import { FiArrowRight } from 'react-icons/fi';
 import { FcLikePlaceholder } from 'react-icons/fc';
+import { useDispatch } from 'react-redux';
+import { activeArticle } from '../actions/articles';
 
 function Results({click, info}){
 
+  const dispatch = useDispatch();
+
+  const id = info._id
+  const article = info._source
+  const content = info._source.article.content[0]
+  console.log(content);
+  const contentAbstract = content.split(" ", 20).join(" ")
+
   const onClick = () => {
     click()
+    dispatch(
+      activeArticle( id, {
+          ...article
+      })
+  )
   }
 
   return(
@@ -19,7 +34,7 @@ function Results({click, info}){
           <FcLikePlaceholder />
         </div>
         <div>
-          <p>{info._source.article.content}</p>
+          <p>{contentAbstract}...</p>
         </div>
       </div>
     </div>

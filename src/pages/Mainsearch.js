@@ -76,18 +76,23 @@ export default function MainSearch() {
           </main>
         </header>
       </form>
-      {
-        change
-          ?
-          <ResultContent info={dataApi} />
-          :
-          show &&
-          dataApi.body.hits.hits.map(info => {
-            return (
-              <Results key={info._id} click={handleClickResults} info={info} />
-            )
-          })
-      }
+      <div className="result-content__main">
+        {
+          change
+            ?
+            <ResultContent info={dataApi} />
+            :
+            show &&
+            dataApi.body.hits.hits.map(info => {
+              return (
+                <div className="results-container">
+                  <Results key={info._id} click={handleClickResults} info={info} />
+
+                </div>
+              )
+            })
+        }
+      </div>
     </>
   )
 }

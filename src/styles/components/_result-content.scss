@@ -1,15 +1,18 @@
 .main__result {
+  max-width: 70%;
   height: 100vh;
   color: $color-text;
   display: flex;
   align-items: center;
   justify-content: center;
   &-left {
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 20%;
   }
   &-right {
-    
+    align-self: flex-start;
+    width: 80%;
   }
 }

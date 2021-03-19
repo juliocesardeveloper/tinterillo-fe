@@ -1,4 +1,4 @@
-import { fetchSinToken, fetchConToken, fetchAut } from "../helpers/fetch"
+import { fetchAut } from "../helpers/fetch"
 import { firebase, googleAuthProvider } from '../firebase/firebaseConfig'
 import { types } from '../types/types'
 import Swal from 'sweetalert2'
@@ -11,13 +11,30 @@ export const startLoginEmailPassword = (email, password) => {
 
     firebase.auth().signInWithEmailAndPassword( email, password )
       .then( ({ user }) => {
-        dispatch( login( user.uid, user.displayName ));
-        dispatch( uiFinishLoading() );
-        // dispatch( uiIsLogged() );
+
+        if ( user.uid ) {
+          dispatch( login( user.uid, user.displayName ));
+          dispatch( uiFinishLoading() );
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Felicitaciones, has ingresado satisfactoriamente!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+
       })
-      .catch( e => {
+      .catch( (e) => {
         console.log(e);
         dispatch( uiFinishLoading() );
+        if ( e.message )
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: e.message,
+          footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
+        })
       })
   }
 }
@@ -59,10 +76,6 @@ export const authLogout = () => ({
   type: types.authLogout
 })
 
-
-
-
-
 // export const startLogin = ( email, password ) => {
 //   return async( dispatch ) => {
 //     const resp = await fetchAut( 'auth/sign-in', { email, password }, 'POST' );
@@ -94,14 +107,31 @@ export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
     firebase.auth().createUserWithEmailAndPassword( email, password )
     .then( async({ user }) => {
 
-      await user.updateProfile({ displayName: name });
+      if ( user.uid ) {
 
-      dispatch(
-        login( user.uid, user.displayName )
-      )
+        await user.updateProfile({ displayName: name });
+
+        dispatch(
+          login( user.uid, user.displayName )
+        )
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Felicitaciones, te has registrado satisfactoriamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+
     })
-    .catch( e => {
-      console.log(e);
+    .catch( (e) => {
+      if ( e.message )
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: e.message,
+        footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
+      })
     })
   }
 }

@@ -26,6 +26,16 @@
       color: $dark-color;
       margin-bottom: 100px;
     }
+    .msg-alert {
+      align-items: center;
+      display: flex;
+      color: salmon;
+      align-self: center;
+      justify-content: center;
+      p {
+        margin-left: 5px;
+      }
+    }
     .form-btn {
       align-self: center;
       background-color: $dark-color;
@@ -44,6 +54,7 @@
       }
       
     }
+
     .google-btn {
       background-color: $secundary-color;
       display: flex;

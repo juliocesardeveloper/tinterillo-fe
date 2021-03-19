@@ -12,7 +12,9 @@ export const ContentDetail = ({res}) => {
 
   const id = res._id
   const article = res._source
-  const articleName = res._source.article.name
+  const articleName = article.article.name
+  const articleContent = article.article.content[0]
+  const contentAbstract = articleContent.split(" ", 6).join(" ")
 
   const handleClick = () => {
       // setChange(true)
@@ -28,6 +30,7 @@ export const ContentDetail = ({res}) => {
       <p className='item'>{res._source.headline.Title}</p>
       <FiArrowRight className='item'/>
       <p className='item'>{articleName}</p>
+      <p>{contentAbstract}...</p>
     </div>
   )
 }

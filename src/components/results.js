@@ -1,9 +1,8 @@
 import React from 'react'
-// import iconos
-import { FiArrowRight } from 'react-icons/fi';
-import { FcLikePlaceholder } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
 import { activeArticle } from '../actions/articles';
+// import iconos
+import { FiArrowRight } from 'react-icons/fi';
 
 function Results({click, info}){
 
@@ -31,7 +30,6 @@ function Results({click, info}){
           <h2 className='item'>{info._source.headline.Title}</h2>
           <FiArrowRight className='icon'/>
           <h2 className='item'>{info._source.article.name}</h2>
-          <FcLikePlaceholder />
         </div>
         <div>
           <p>{contentAbstract}...</p>

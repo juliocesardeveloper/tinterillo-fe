@@ -12,7 +12,7 @@ function Results({click, info}){
   const article = info._source
   const content = info._source.article.content[0]
   console.log(content);
-  const contentAbstract = content.split(" ", 20).join(" ")
+  const contentAbstract = content.split(" ", 30).slice(2).join(" ")
 
   const onClick = () => {
     click()

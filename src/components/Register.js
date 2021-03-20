@@ -13,12 +13,17 @@ export const Register = () => {
 
   const [ formRegisterValues, handleRegisterInputChange ] = useForm({
     rName: 'Johan',
+    rLastName: '',
     rEmail: 'johan@outlook.com',
     rPassword1: 'Password3',
-    rPassword2: 'Password3'
+    rPassword2: 'Password3',
+    rDepartment: '',
+    rGender: '',
+    rBirthday: '',
+    rJob: ''
    });
 
-   const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues;
+   const { rName, rLastName, rEmail, rPassword1, rPassword2, rDepartment, rGender, rBirthday, rJob } = formRegisterValues;
 
    const handleRegister = ( e ) => {
     e.preventDefault();
@@ -66,9 +71,16 @@ export const Register = () => {
 
           <input
             type="text"
-            placeholder="Nombre completo"
+            placeholder="Nombre"
             name="rName"
             value={ rName }
+            onChange={ handleRegisterInputChange }
+          />
+          <input
+            type="text"
+            placeholder="Apellido"
+            name="rLastName"
+            value={ rLastName }
             onChange={ handleRegisterInputChange }
           />
           <input
@@ -90,6 +102,27 @@ export const Register = () => {
             placeholder="Confirmar contraseña"
             name="rPassword2"
             value={ rPassword2 }
+            onChange={ handleRegisterInputChange }
+          />
+          <input
+            type="text"
+            placeholder="Departamento de residencia"
+            name="rDepartment"
+            value={ rDepartment }
+            onChange={ handleRegisterInputChange }
+          />
+          <input
+            type="text"
+            placeholder="Género"
+            name="rGender"
+            value={ rGender }
+            onChange={ handleRegisterInputChange }
+          />
+          <input
+            type="date"
+            placeholder="Fecha de nacimiento"
+            name="rBirthday"
+            value={ rBirthday }
             onChange={ handleRegisterInputChange }
           />
 

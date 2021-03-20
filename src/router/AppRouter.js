@@ -8,7 +8,7 @@ import {
   Redirect
 } from 'react-router-dom'
 import { AiOutlineReload } from 'react-icons/ai'
-import { login, startChecking } from '../actions/auth'
+import { login, firebaseLogin, startChecking } from '../actions/auth'
 import { ProfileScreen } from '../components/ProfileScreen'
 import MainSearch from '../pages/Mainsearch'
 import { PrivateRoute } from './PrivateRoute'
@@ -27,7 +27,7 @@ export const AppRouter = () => {
 
     firebase.auth().onAuthStateChanged( (user) => {
       if ( user?.uid ) {
-        dispatch( login( user.uid, user.displayName ) );
+        dispatch( firebaseLogin( user.uid, user.displayName ) );
         dispatch( uiIsLogged() )
         setIsLoggedIn( true );
       } else {

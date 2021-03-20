@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { startGoogleLogin, startLoginEmailPassword } from '../actions/auth'
+import { startGoogleLogin, startLogin, startLoginEmailPassword } from '../actions/auth'
 import { useForm } from '../hooks/useForm'
 import { FcGoogle } from 'react-icons/fc'
 import { uiCloseModal, uiRemoveError, uiSetError } from '../actions/ui'
@@ -14,14 +14,16 @@ export const Login = () => {
   const { loading, msgError } = useSelector(state => state.ui)
 
   const [ formLoginValues, handleLoginInputChange ] = useForm({
-    lEmail: 'johan@outlook.com',
-    lPassword: 'Password3'
+    lEmail: 'jcesar@email.com',
+    lPassword: 'Password1'
    });
 
    const { lEmail, lPassword } = formLoginValues;
 
    const handleLogin = ( e ) => {
     e.preventDefault();
+    
+    dispatch( startLogin( lEmail, lPassword ) );
 
     if ( isFormValid() ) {
       dispatch( startLoginEmailPassword( lEmail, lPassword ) );

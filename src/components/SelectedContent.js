@@ -23,7 +23,7 @@ export const SelectedContent = () => {
             {
               article.article.content.length > 1
                 ? <div>
-                    <p> {articleContent[0]} </p><br/>
+                    <p> {articleContent[0].split(" ").slice(2).join(" ")} </p><br/>
                     <p> {articleContent[1]} </p><br/>
                     <p> {articleContent[2]} </p><br/>
                     <p> {articleContent[3]} </p><br/>

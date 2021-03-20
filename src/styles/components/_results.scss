@@ -2,9 +2,10 @@
   margin: 2rem 4rem 0 4rem;
   color: $color-text;
   border: none;
-  padding: 1.2rem;
+  padding: 3rem;
   transition: 0.6s;
   cursor: pointer;
+  border-radius: 28px;
   &:hover {
     box-shadow: 5px 3px 15px gray;
     // margin-left: 5rem;

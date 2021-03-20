@@ -7,7 +7,7 @@
   .Login-form {
     display: flex;
     flex-direction: column;
-    width: 563px;
+    max-width: 563px;
     input {
       align-self: center;
       border: none;
@@ -20,7 +20,7 @@
       &::placeholder {
         color: $dark-color;
       }
-      width: 100%;
+      max-width: 100%;
     }
     .form-title {
       color: $dark-color;
@@ -46,13 +46,12 @@
       height: 74px;
       margin-top: 50px;
       outline: none;
-      width: 511px;
+      width: 90%;
       &:hover {
         background-color: #B47EA3;
         color: $dark-color;
         cursor: pointer;
       }
-      
     }
 
     .google-btn {

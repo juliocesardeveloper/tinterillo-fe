@@ -14,7 +14,7 @@ export const ContentDetail = ({res}) => {
   const article = res._source
   const articleName = article.article.name
   const articleContent = article.article.content[0]
-  const contentAbstract = articleContent.split(" ", 6).join(" ")
+  const contentAbstract = articleContent.split(" ", 10).slice(2).join(" ")
 
   const handleClick = () => {
       // setChange(true)
@@ -27,9 +27,10 @@ export const ContentDetail = ({res}) => {
 
   return(
     <div onClick={handleClick} className='side-content'>
-      <p className='item'>{res._source.headline.Title}</p>
-      <FiArrowRight className='item'/>
-      <p className='item'>{articleName}</p>
+      <div className="side-content-title">
+        <FiArrowRight className='item'/>
+        <p className='item'>{articleName}</p>
+      </div>
       <p>{contentAbstract}...</p>
     </div>
   )

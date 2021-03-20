@@ -17,7 +17,7 @@ export const authReducer = ( state = initialState, action ) => {
         ...action.payload,
         // uid: action.payload.uid,
         // name: action.payload.displayName,
-        checking: false,
+        checking: false
       }
     
     case types.authLogout:

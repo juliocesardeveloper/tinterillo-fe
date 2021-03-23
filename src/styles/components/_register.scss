@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   max-height: 800px;
+  width: clamp(350px, 511px, 511px);
   .Register-form {
     display: flex;
     flex-direction: column;
@@ -21,7 +22,18 @@
       &::placeholder {
         color: $dark-color;
       }
-      max-width: 98%;
+      width: 98%;
+    }
+    .select {
+      align-self: center;
+      border: none;
+      background-color: $light-color;
+      border-bottom: 1px solid $dark-color;
+      font-size: 2rem;
+      color: $dark-color;
+      margin: 10px;
+      outline: none;
+      width: 98%;
     }
     .form-title {
       h1 {

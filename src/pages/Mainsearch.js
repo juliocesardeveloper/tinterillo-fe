@@ -42,8 +42,6 @@ export default function MainSearch() {
       setShow(true)
       setDataDos(data)
       // history.push('/search')
-    } else {
-      console.log('Campo de busqueda vacia');
     }
   }
   //Asigna el valor del input al estado "data"
@@ -92,6 +90,7 @@ export default function MainSearch() {
               )
             })
         }
+        
       </div>
     </>
   )

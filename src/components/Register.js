@@ -62,11 +62,11 @@ export const Register = () => {
 
 
   const [ formRegisterValues, handleRegisterInputChange ] = useForm({
-    rName: 'Johan',
+    rName: '',
     rLastName: '',
-    rEmail: 'johan@outlook.com',
-    rPassword1: 'Password3',
-    rPassword2: 'Password3',
+    rEmail: '',
+    rPassword1: '',
+    rPassword2: '',
     rDepartment: '',
     rGender: '',
     rBirthday: '',

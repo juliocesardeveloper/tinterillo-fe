@@ -43,22 +43,26 @@ main {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3rem;
-
+  padding-left: 10px;
   input {
     max-width: 48rem;
     height: 3.5rem;
     border: none;
     outline: none;
     margin-left: 1rem;
+    font-size: 20px;
+    font-family: $font;
+    color: $dark-color;
   }
   .icon-search {
-    color: white;
+    color: $light-color;
     background-color: $secundary-color;
     border: none;
     cursor: pointer;
     height: 4.6rem;
     border-radius: 0 30px 30px 0;
     padding: 1rem 1.8rem;
+    outline: none;
     &:hover {
       background-color: #3ba2dd;
     }
@@ -95,6 +99,7 @@ main {
     }
     transition: 0.8s;
     .section__input {
+      
       margin: 0 auto;
       border: 1px solid #dfe1e5;
       border-radius: 2.4rem;
@@ -105,7 +110,6 @@ main {
       justify-content: space-between;
       align-items: center;
       margin-bottom: 3rem;
-
       input {
         max-width: 38rem;
         height: 3.5rem;

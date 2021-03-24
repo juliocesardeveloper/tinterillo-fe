@@ -40,7 +40,7 @@ export const AppRouter = () => {
 
   if ( checking ) {
     return (
-      <h1><AiOutlineReload /> Espere...</h1>
+      <h4><AiOutlineReload /> Espera...</h4>
     )
   }
 

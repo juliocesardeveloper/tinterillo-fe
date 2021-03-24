@@ -42,8 +42,6 @@ export default function MainSearch() {
       setShow(true)
       setDataDos(data)
       // history.push('/search')
-    } else {
-      console.log('Campo de busqueda vacia');
     }
   }
   //Asigna el valor del input al estado "data"
@@ -66,7 +64,9 @@ export default function MainSearch() {
             <div>
               <section className="section__input">
                 <label>
+
                   <input type="text" onChange={handleChange} />
+
                 </label>
                 <button className='icon-search' type='submit'>
                   <FaSearch />
@@ -92,6 +92,7 @@ export default function MainSearch() {
               )
             })
         }
+        
       </div>
     </>
   )

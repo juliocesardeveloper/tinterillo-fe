@@ -1,4 +1,4 @@
-import { fetchAut, fetchSinToken } from "../helpers/fetch"
+import { fetchSinToken, fetchConToken } from "../helpers/fetch"
 import { firebase, googleAuthProvider } from '../firebase/firebaseConfig'
 import { types } from '../types/types'
 import Swal from 'sweetalert2'
@@ -13,7 +13,7 @@ export const startLoginEmailPassword = (email, password) => {
       .then( ({ user }) => {
 
         if ( user.uid ) {
-          dispatch( login( user.uid, user.displayName ));
+          dispatch( firebaseLogin( user.uid, user.displayName ));
           dispatch( uiFinishLoading() );
 
           Swal.fire({
@@ -39,6 +39,40 @@ export const startLoginEmailPassword = (email, password) => {
   }
 }
 
+export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
+  return ( dispatch ) => {
+    firebase.auth().createUserWithEmailAndPassword( email, password )
+    .then( async({ user }) => {
+
+      if ( user.uid ) {
+
+        await user.updateProfile({ displayName: name });
+
+        dispatch(
+          firebaseLogin( user.uid, user.displayName )
+        )
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Felicitaciones, te has registrado satisfactoriamente',
+          showConfirmButton: false,
+          timer: 3000
+        })
+      }
+
+    })
+    .catch( (e) => {
+      if ( e.message )
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: e.message,
+        footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
+      })
+    })
+  }
+}
+
 export const startGoogleLogin = () => {
   return ( dispatch ) => {
 
@@ -47,7 +81,7 @@ export const startGoogleLogin = () => {
         dispatch(
           firebaseLogin( user.uid, user.displayName )
         )
-        // dispatch( uiIsLogged() )
+        dispatch( uiIsLogged() )
       })
 
   }
@@ -68,7 +102,7 @@ export const startLogout = () => {
   return async( dispatch ) => {
     await firebase.auth().signOut();
     dispatch( authLogout() )
-    // dispatch( uiIsLoggedOut() )
+    dispatch( uiIsLoggedOut() )
   }
 }
 
@@ -113,39 +147,6 @@ export const authLogout = () => ({
   // }
 // }
 
-export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
-  return ( dispatch ) => {
-    firebase.auth().createUserWithEmailAndPassword( email, password )
-    .then( async({ user }) => {
-
-      if ( user.uid ) {
-
-        await user.updateProfile({ displayName: name });
-
-        dispatch(
-          firebaseLogin( user.uid, user.displayName )
-        )
-
-        Swal.fire({
-          icon: 'success',
-          title: 'Felicitaciones, te has registrado satisfactoriamente',
-          showConfirmButton: false,
-          timer: 3000
-        })
-      }
-
-    })
-    .catch( (e) => {
-      if ( e.message )
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: e.message,
-        footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
-      })
-    })
-  }
-}
 
 // export const startRegister = ( email, password, name ) => {
 //   return async( dispatch ) => {
@@ -179,10 +180,10 @@ export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
 
 // export const startChecking = ( email, password ) => {
 //   return async(dispatch) => {
-//     const resp = await fetchAut( 'auth/sign-in', { email, password } );
+//     const resp = await fetchConToken( 'auth/sign-in', { email, password }, 'POST' );
 //     const body = await resp.json();
-
-//     if ( body.ok ) {
+//     console.log(body);
+//     if ( body.message === "This user exist." ) {
 
 //       dispatch( login({
 //         uid: body._id,
@@ -202,7 +203,7 @@ export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
 
 // const checkingFinish = () => ({ type: types.authCheckingFinish })
 
-const login = ( user ) => ({
-  type: types.authLogin,
-  payload: user
-})
+// const login = ( user ) => ({
+//   type: types.authLogin,
+//   payload: user
+// })

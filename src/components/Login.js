@@ -25,7 +25,7 @@ export const Login = () => {
 
    const handleLogin = ( e ) => {
     e.preventDefault();
-
+    
     // dispatch( startLogin( lEmail, lPassword ) );
 
     if ( isFormValid() ) {
@@ -33,6 +33,11 @@ export const Login = () => {
       dispatch( uiCloseModal() )
     }
 
+   }
+
+   const handleGoogleLogin = () => {
+     dispatch( startGoogleLogin() );
+     dispatch( uiCloseModal() )
    }
 
    const isFormValid = () => {
@@ -47,10 +52,6 @@ export const Login = () => {
     return true;
   }
 
-  const handleGoogleLogin = () => {
-    dispatch( startGoogleLogin() );
-    dispatch( uiCloseModal() )
-  }
 
   return (
     <>

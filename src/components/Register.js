@@ -5,6 +5,10 @@ import { useForm } from '../hooks/useForm'
 import validator from 'validator'
 import { uiCloseModal, uiRemoveError, uiSetError } from '../actions/ui'
 import { BiErrorAlt } from 'react-icons/bi'
+import { FaUserAlt } from 'react-icons/fa'
+import { RiLockPasswordFill } from 'react-icons/ri'
+import { MdEmail } from 'react-icons/md'
+
 
 const departmentOptions = [
   "Amazonas",
@@ -48,9 +52,6 @@ const genderOptions = [
   "Prefiero no decir"
 ]
 
-import { FaUserAlt } from 'react-icons/fa'
-import { RiLockPasswordFill } from 'react-icons/ri'
-import { MdEmail } from 'react-icons/md'
 
 export const Register = () => {
 

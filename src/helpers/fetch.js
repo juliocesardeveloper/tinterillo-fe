@@ -22,32 +22,36 @@ const fetchSinToken = async( endpoint, data, method = 'GET' ) => {
     }
 }
 
-// const fetchConToken = ( endpoint, data, method = 'GET' ) => {
+const fetchConToken = ( endpoint, data, method = 'GET' ) => {
 
-//   const url = `${ baseUrl }/${ endpoint }`;
+  const url = `${ baseUrl }/${ endpoint }`;
+  const token = localStorage.getItem('token') || '';
+  console.log(token);
 
-//   if ( method === 'GET' ) {
-//     return fetch( url, {
-//       method,
-//       headers: {
-//         'Authorization': `Basic ${btoa(`${data.email}:${data.password}`)}`,
-//         'Content-type': 'application/json; charset=utf-8',
-//       }
-//     });
-//   } else {
-//     return fetch( url, {
-//       method,
-//       headers: {
-//         'Authorization': `Basic ${btoa(`${data.email}:${data.password}`)}`,
-//         'Content-type': 'application/json; charset=utf-8',
-//       },
-//       body: JSON.stringify( data, null, 2 )
-//     });
-//   }
-// }
+  if ( method === 'POST' ) {
+    return fetch( url, {
+      method,
+      headers: {
+        'Authorization': `Basic ${btoa(`${data.email}:${data.password}`)}`,
+        'Content-type': 'application/json',
+        'Cookie': `token=${token}`
+      }
+    });
+  } else {
+    return fetch( url, {
+      method,
+      headers: {
+        'Authorization': `Basic ${btoa(`${data.email}:${data.password}`)}`,
+        'Content-type': 'application/json',
+        'Cookie': `token=${token}`
+      },
+      body: JSON.stringify( data, null, 2 )
+    });
+  }
+}
 
 export {
   fetchSinToken,
-  // fetchConToken,
+  fetchConToken,
   // fetchAut
 }

@@ -5,27 +5,40 @@
   align-items: center;
   justify-content: center;
   width: clamp(350px, 511px, 511px);
+  font-family: $font;
   .Login-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: clamp(350px, 511px, 511px);
     input {
-      align-self: center;
       border: none;
       background-color: $light-color;
-      border-bottom: 1px solid $dark-color;
       font-size: 30px;
       color: $dark-color;
-      margin: 30px;
+      font-family: $font;
       outline: none;
       &::placeholder {
         color: $dark-color;
       }
-      max-width: 100%;
+      width: 90%;
+
     }
-    .form-title {
-      color: $dark-color;
-      margin-bottom: 100px;
+    .input-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: solid 1px $dark-color;
+      margin: 30px 20px 10px 20px;
+      padding-bottom: 10px;
+      width: 80%;
+      .input-icon {
+        color: $dark-color;
+        margin-right: 15px;
+        width: 24px;
+        height: 24px;
+      }
     }
     .msg-alert {
       align-items: center;
@@ -37,17 +50,19 @@
         margin-left: 5px;
       }
     }
+
     .form-btn {
       align-self: center;
       background-color: $dark-color;
       border: none;
       border-radius: 18px;
       color: $light-color;
+      font-family: $font;
       font-size: 36px;
       height: 74px;
       margin-top: 50px;
       outline: none;
-      width: 90%;
+      width: 80%;
       &:hover {
         background-color: #B47EA3;
         color: $dark-color;
@@ -74,4 +89,8 @@
       }
     }
   }
+}
+.form-title {
+  margin-bottom: 30px;
+  color: $dark-color;
 }

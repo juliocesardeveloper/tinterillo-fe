@@ -19,6 +19,10 @@
       cursor: pointer;
     }
   }
+  .display-name {
+    color: $light-color;
+    font-family: $font;
+  }
 }
 
 .logo-container {

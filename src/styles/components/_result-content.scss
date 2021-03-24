@@ -1,19 +1,18 @@
 .main__result {
+  max-width: 70%;
   height: 100vh;
   color: $color-text;
   display: flex;
+  align-items: center;
+  justify-content: center;
   &-left {
-    width: 65%;
-    border-right: 1px solid $border-content;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
   }
   &-right {
-    text-align: center;
-    padding: 3rem;
-    * {
-      padding-bottom: 3rem;
-    }
-    p {
-      text-align: left;
-    }
+    align-self: flex-start;
+    width: 70%;
   }
 }

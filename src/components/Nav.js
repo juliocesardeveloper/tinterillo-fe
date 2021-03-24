@@ -8,16 +8,21 @@ import {Login} from '../components/Login';
 import {ModalForm} from '../components/ModalForm';
 import {Register} from '../components/Register';
 
-import { useDispatch } from 'react-redux';
-import { uiOpenModal } from '../actions/ui';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiIsLoggedOut, uiOpenModal } from '../actions/ui';
+import { startLogout } from '../actions/auth';
 
 export default function Nav(){
 
+	
+
 	// let register = <Register />
 	// let login = <Login />
-		const logged = false
     const [register, setRegister] = useState(false)
     const [login, setLogin] = useState(false)
+
+		const { isLogged } = useSelector(state => state.ui)
+		const { displayName } = useSelector( state => state.auth )
 
     const dispatch = useDispatch();
 
@@ -34,7 +39,12 @@ export default function Nav(){
     }
 
 		const handleOpenProfile = (e) => {
+			
+		}
 
+		const handleLogout = () => {
+			dispatch( startLogout() )
+			dispatch( uiIsLoggedOut() )
 		}
 
     return(
@@ -45,9 +55,13 @@ export default function Nav(){
 					</div>
 					<ul className='nav__content-sesion'>
 						{
-							logged
+							isLogged
 							?
-								<li><Link to="/perfil" className="profile-button nav-button" onClick={handleOpenProfile}>Hola usuario</Link></li>
+								<>
+									<li className="display-name">Hola {displayName}</li>
+									<li><Link to="/perfil" className="profile-button nav-button" onClick={handleOpenProfile}>Perfil</Link></li>
+									<li><Link to="/" className="profile-button nav-button" onClick={handleLogout}>Cerrar Sesión</Link></li>
+								</>
 							:
 								<>
 									<li><a className="register-button nav-button" onClick={handleOpenRegister}>Regístrate</a></li>

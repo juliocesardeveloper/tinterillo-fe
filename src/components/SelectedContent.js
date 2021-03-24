@@ -21,7 +21,7 @@ export const SelectedContent = () => {
           <div className="article-body">
             <h1>{ article.article.name }</h1>
             {
-              article.article.content.length > 1
+              article.article.content.length >= 1
                 ? <div>
                     <p> {articleContent[0].split(" ").slice(2).join(" ")} </p><br/>
                     <p> {articleContent[1]} </p><br/>
@@ -29,22 +29,23 @@ export const SelectedContent = () => {
                     <p> {articleContent[3]} </p><br/>
                     <p> {articleContent[4]} </p><br/>
                   </div>
-                : <p>{ articleContent }</p>
+                : <p>{ articleContent.split(" ").slice(2).join(" ") }</p>
             }
 
           </div>
           <div className="reference article-reference1">
             {
               article.headline.title
-                ? <p>Lo encuentras en el { article.headline.title }: {article.headline.name} </p>
+                ? <p>Este artículo es del { article.headline.title }: { article.headline.name } </p>
                 : ''
             }
           </div>
           <div className="reference article-reference2">
             {
+              
               article.chapter.title === "null"
                 ? ''
-                : <p>En el { article.chapter.title }: { article.chapter.name } </p>
+                :  <p>- { article.chapter.title }: { article.chapter.name } </p>
             }
           </div>
         </div>

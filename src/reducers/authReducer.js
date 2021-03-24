@@ -15,7 +15,7 @@ export const authReducer = ( state = initialState, action ) => {
       return {
         ...state,
         ...action.payload,
-        // uid: action.payload.uid,
+        uid: action.payload.uid,
         // name: action.payload.displayName,
         checking: false
       }

@@ -14,8 +14,8 @@ export const Login = () => {
   const { loading, msgError } = useSelector(state => state.ui)
 
   const [ formLoginValues, handleLoginInputChange ] = useForm({
-    lEmail: 'jcesar@email.com',
-    lPassword: 'Password1'
+    lEmail: '',
+    lPassword: ''
    });
 
    const { lEmail, lPassword } = formLoginValues;
@@ -23,7 +23,7 @@ export const Login = () => {
    const handleLogin = ( e ) => {
     e.preventDefault();
     
-    dispatch( startLogin( lEmail, lPassword ) );
+    // dispatch( startLogin( lEmail, lPassword ) );
 
     if ( isFormValid() ) {
       dispatch( startLoginEmailPassword( lEmail, lPassword ) );
@@ -34,6 +34,7 @@ export const Login = () => {
 
    const handleGoogleLogin = () => {
      dispatch( startGoogleLogin() );
+     dispatch( uiCloseModal() )
    }
 
    const isFormValid = () => {

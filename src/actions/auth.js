@@ -45,7 +45,7 @@ export const startGoogleLogin = () => {
     firebase.auth().signInWithPopup( googleAuthProvider )
       .then( ({ user }) => {
         dispatch(
-          login( user.uid, user.displayName )
+          firebaseLogin( user.uid, user.displayName )
         )
         // dispatch( uiIsLogged() )
       })
@@ -76,23 +76,23 @@ export const authLogout = () => ({
   type: types.authLogout
 })
 
-export const startLogin = ( email, password ) => {
-  return async( dispatch ) => {
-    const resp = await fetchSinToken( 'auth/sign-in', { email, password }, 'POST' );
-    const body = await resp.json();
-    console.log(body);
-    if( body.message === "This user exist." ) {
-      localStorage.setItem('token', body.token);
-      localStorage.setItem('token-init-date', new Date().getTime() );
+// export const startLogin = ( email, password ) => {
+//   return async( dispatch ) => {
+//     const resp = await fetchSinToken( 'auth/sign-in', { email, password }, 'POST' );
+//     const body = await resp.json();
+//     console.log(body);
+//     if( body.message === "This user exist." ) {
+//       localStorage.setItem('token', body.token);
+//       localStorage.setItem('token-init-date', new Date().getTime() );
 
-      dispatch( login({
-        uid: body.user._id,
-        name: body.user.name
-      }))
+//       dispatch( login({
+//         uid: body.user._id,
+//         name: body.user.name
+//       }))
 
-    }
+//     }
     
-  }
+//   }
 
 
   //   if ( body.ok ) {
@@ -111,7 +111,7 @@ export const startLogin = ( email, password ) => {
   //     })
   //   }
   // }
-}
+// }
 
 export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
   return ( dispatch ) => {
@@ -123,7 +123,7 @@ export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
         await user.updateProfile({ displayName: name });
 
         dispatch(
-          login( user.uid, user.displayName )
+          firebaseLogin( user.uid, user.displayName )
         )
 
         Swal.fire({

@@ -42,7 +42,6 @@ export const SelectedContent = () => {
           </div>
           <div className="reference article-reference2">
             {
-              
               article.chapter.title === "null"
                 ? ''
                 :  <p>- { article.chapter.title }: { article.chapter.name } </p>

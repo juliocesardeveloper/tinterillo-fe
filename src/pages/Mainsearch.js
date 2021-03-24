@@ -63,11 +63,7 @@ export default function MainSearch() {
             <h1>TINTERILLO APP</h1>
             <div>
               <section className="section__input">
-                <label>
-
-                  <input type="text" onChange={handleChange} />
-
-                </label>
+                <input type="text" onChange={handleChange} />
                 <button className='icon-search' type='submit'>
                   <FaSearch />
                 </button>

@@ -1,16 +1,22 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { startLogin } from '../actions/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { startGoogleLogin, startLogin, startLoginEmailPassword } from '../actions/auth'
 import { useForm } from '../hooks/useForm'
+
+import { FcGoogle } from 'react-icons/fc'
+import { uiCloseModal, uiRemoveError, uiSetError } from '../actions/ui'
+import { BiErrorAlt } from 'react-icons/bi'
 import { FaUserAlt } from 'react-icons/fa'
 import { RiLockPasswordFill } from 'react-icons/ri'
 
+import validator from 'validator'
 
 export const Login = () => {
 
   const dispatch = useDispatch();
+  const { loading, msgError } = useSelector(state => state.ui)
 
-  const [ formLoginValues, handleLoginInputChange, reset ] = useForm({
+  const [ formLoginValues, handleLoginInputChange ] = useForm({
     lEmail: '',
     lPassword: ''
    });
@@ -20,9 +26,31 @@ export const Login = () => {
    const handleLogin = ( e ) => {
     e.preventDefault();
 
-    dispatch( startLogin( lEmail, lPassword ) );
+    // dispatch( startLogin( lEmail, lPassword ) );
+
+    if ( isFormValid() ) {
+      dispatch( startLoginEmailPassword( lEmail, lPassword ) );
+      dispatch( uiCloseModal() )
+    }
 
    }
+
+   const isFormValid = () => {
+    if ( !validator.isEmail( lEmail ) ) {
+      dispatch( uiSetError('El email no es válido') );
+      return false;
+    } else if ( lPassword < 5 ) {
+      dispatch( uiSetError('El password debe tener al menos 6 caracteres') );
+      return false
+    }
+    dispatch( uiRemoveError() );
+    return true;
+  }
+
+  const handleGoogleLogin = () => {
+    dispatch( startGoogleLogin() );
+    dispatch( uiCloseModal() )
+  }
 
   return (
     <>
@@ -32,6 +60,18 @@ export const Login = () => {
         </div>
 
         <form onSubmit={ handleLogin } className="Login-form">
+
+
+          {
+            msgError &&
+            (
+              <div className="msg-alert">
+                <BiErrorAlt />
+                <p className="msg-alert__p">{ msgError }</p>
+              </div>
+            )
+          }
+
           <div className="input-container">
             <FaUserAlt className="input-icon" />
             <input
@@ -52,8 +92,17 @@ export const Login = () => {
               onChange={ handleLoginInputChange }
             />
           </div>
-          <button className="form-btn login-btn" >
+          <button
+            type="submit"
+            className="form-btn login-btn"
+            disabled={ loading }
+          >
+
             Iniciar sesión
+          </button>
+          <button className="form-btn google-btn" onClick={ handleGoogleLogin }>
+            <FcGoogle className="google-icon" />
+            <p>Inicia sesión con Google</p>
           </button>
         </form>
       </div>

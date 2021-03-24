@@ -38,14 +38,14 @@ main {
   border-radius: 2.4rem;
   height: 4.6rem;
   background-color: white;
-  width: 58rem;
+  max-width: 58rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3rem;
   padding-left: 10px;
   input {
-    width: 48rem;
+    max-width: 48rem;
     height: 3.5rem;
     border: none;
     outline: none;
@@ -105,13 +105,13 @@ main {
       border-radius: 2.4rem;
       height: 4rem;
       background-color: white;
-      width: 48rem;
+      max-width: 48rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 3rem;
       input {
-        width: 38rem;
+        max-width: 38rem;
         height: 3.5rem;
         border: none;
         outline: none;
@@ -133,5 +133,19 @@ main {
   &:hover {
     color: $secundary-color;
   }
+}
+
+.result-content__main {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-container {
+  // display: flex;
+  // flex-direction: column;
+  width: 70%;
 }
 

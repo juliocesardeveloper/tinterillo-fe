@@ -4,6 +4,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  max-height: 800px;
+  width: clamp(350px, 511px, 511px);
   font-family: $font;
   .Register-form {
     display: flex;
@@ -14,13 +17,30 @@
     input {
       border: none;
       background-color: $light-color;
-      font-size: 30px;
+      border-bottom: 1px solid $dark-color;
+      font-size: 2rem;
       color: $dark-color;
-      font-family: $font;
+      margin: 10px;
       outline: none;
       &::placeholder {
         color: $dark-color;
       }
+      width: 98%;
+    }
+    .select {
+      align-self: center;
+      border: none;
+      background-color: $light-color;
+      border-bottom: 1px solid $dark-color;
+      font-size: 2rem;
+      color: $dark-color;
+      margin: 10px;
+      outline: none;
+      width: 98%;
+    }
+    .form-title {
+      h1 {
+        color: $dark-color !important;
       width: 90%;
     }
     .input-container {
@@ -38,18 +58,28 @@
         height: 24px;
       }
     }
+    .msg-alert {
+      align-items: center;
+      display: flex;
+      color: salmon;
+      align-self: center;
+      justify-content: center;
+      p {
+        margin-left: 5px;
+      }
+    }
     .form-btn {
       align-self: center;
       background-color: $dark-color;
       border: none;
       border-radius: 18px;
       color: $light-color;
-      font-family: $font;
-      font-size: 36px;
-      height: 74px;
+      font-size: 25px;
+      height: 70px;
       margin-top: 20px;
       outline: none;
-      width: 80%;
+      width: 98%;
+      font-family: $font;
       &:hover {
         background-color: #B47EA3;
         color: $dark-color;

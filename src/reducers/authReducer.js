@@ -7,6 +7,7 @@ const initialState = {
 }
 
 export const authReducer = ( state = initialState, action ) => {
+// export const authReducer = ( state = {}, action ) => {
 
   switch ( action.type ) {
 
@@ -14,8 +15,13 @@ export const authReducer = ( state = initialState, action ) => {
       return {
         ...state,
         ...action.payload,
-        checking: false,
+        // uid: action.payload.uid,
+        // name: action.payload.displayName,
+        checking: false
       }
+    
+    case types.authLogout:
+      return { }
 
     case types.authCheckingFinish:
       return {

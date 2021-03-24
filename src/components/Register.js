@@ -48,6 +48,10 @@ const genderOptions = [
   "Prefiero no decir"
 ]
 
+import { FaUserAlt } from 'react-icons/fa'
+import { RiLockPasswordFill } from 'react-icons/ri'
+import { MdEmail } from 'react-icons/md'
+
 export const Register = () => {
 
   const dispatch = useDispatch();
@@ -71,6 +75,7 @@ export const Register = () => {
     rGender: '',
     rBirthday: '',
     rJob: ''
+
    });
 
    const { rName, rLastName, rEmail, rPassword1, rPassword2, rDepartment, rGender, rBirthday, rJob } = formRegisterValues;
@@ -115,8 +120,8 @@ export const Register = () => {
   return (
     <>
       <div className="form-container">
-        <div className="form-title register-title">
-          <h1>REGISTRO</h1>
+        <div className="form-title-container">
+          <h1 className="form-title register-title">REGISTRO</h1>
         </div>
 
         <form onSubmit={ handleRegister } className="Register-form">
@@ -130,42 +135,47 @@ export const Register = () => {
               </div>
             )
           }
-
-          <input
-            type="text"
-            placeholder="Nombre"
-            name="rName"
-            value={ rName }
-            onChange={ handleRegisterInputChange }
-          />
-          <input
-            type="text"
-            placeholder="Apellido"
-            name="rLastName"
-            value={ rLastName }
-            onChange={ handleRegisterInputChange }
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            name="rEmail"
-            value={ rEmail }
-            onChange={ handleRegisterInputChange }
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            name="rPassword1"
-            value={ rPassword1 }
-            onChange={ handleRegisterInputChange }
-          />
-          <input
-            type="password"
-            placeholder="Confirmar contraseña"
-            name="rPassword2"
-            value={ rPassword2 }
-            onChange={ handleRegisterInputChange }
-          />
+          
+          <div className="input-container">
+            <FaUserAlt className="input-icon" />
+            <input
+              type="text"
+              placeholder="Nombre completo"
+              name="rName"
+              value={ rName }
+              onChange={ handleRegisterInputChange }
+            />
+          </div>
+          <div className="input-container">
+            <MdEmail className="input-icon" />
+            <input
+              type="email"
+              placeholder="Email"
+              name="rEmail"
+              value={ rEmail }
+              onChange={ handleRegisterInputChange }
+            />
+          </div>
+          <div className="input-container">
+            <RiLockPasswordFill className="input-icon" />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              name="rPassword1"
+              value={ rPassword1 }
+              onChange={ handleRegisterInputChange }
+            />
+          </div>
+          <div className="input-container">
+            <RiLockPasswordFill className="input-icon" />
+            <input
+              type="password"
+              placeholder="Confirmar contraseña"
+              name="rPassword2"
+              value={ rPassword2 }
+              onChange={ handleRegisterInputChange }
+            />
+          </div>
           <select className="select" id="departments" name="rDepartment" value={rDepartment} onChange={handleRegisterInputChange}>
             <option value="">Departamento</option>
             {

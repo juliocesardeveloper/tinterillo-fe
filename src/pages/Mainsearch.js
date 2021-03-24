@@ -64,7 +64,9 @@ export default function MainSearch() {
             <div>
               <section className="section__input">
                 <label>
+
                   <input type="text" onChange={handleChange} />
+
                 </label>
                 <button className='icon-search' type='submit'>
                   <FaSearch />

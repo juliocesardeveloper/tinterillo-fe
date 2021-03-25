@@ -13,7 +13,7 @@ export const ProfileScreen = ({ children }) => {
       <div className="profile-main-container">
         <Nav />
       </div>
-      <div>
+      <div className="articles-container">
 
         {
           articles.map( article => (

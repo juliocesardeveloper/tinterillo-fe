@@ -14,8 +14,9 @@
   .like-btn-container {
     align-self: flex-end;
     .like-btn {
-      border: none;
       background: none;
+      border: none;
+      cursor: pointer;
       outline: none;
     }
     

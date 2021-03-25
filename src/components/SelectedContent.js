@@ -1,9 +1,7 @@
-
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
 import { FcLikePlaceholder, FcLike } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
-import { openArticle, likeArticle, dislikeArticle } from '../actions/articles';
+import { openArticle, likeArticle, dislikeArticle, activeArticle, startSaveArticle } from '../actions/articles';
 
 export const SelectedContent = () => {
 
@@ -11,7 +9,7 @@ export const SelectedContent = () => {
   const dispatch = useDispatch();
 
   const { active:article  } = useSelector(state => state.articles)
-  console.log(article);
+
 
   const { like } = useSelector(state => state.articles )
 
@@ -20,6 +18,9 @@ export const SelectedContent = () => {
 
   const handleLike = () => {
     // dispatch( openArticle() );
+    // console.log( article );
+    dispatch( activeArticle( article.id, { ...article } ) )
+    dispatch( startSaveArticle( article ) )
     dispatch( likeArticle() )
   }
 
@@ -28,7 +29,7 @@ export const SelectedContent = () => {
   }
 
   return (
-    <div selected__main-container>
+    <div className="selected__main-container">
       <div  className="selected-content">
         <div className="like-btn-container">
           {
@@ -57,7 +58,7 @@ export const SelectedContent = () => {
           <div className="reference article-reference1">
             {
               article.headline.title
-                ? <p>Este artículo es del { article.headline.title }: { article.headline.name } </p>
+                ? <p>Este artículo es de { article.headline.title }: { article.headline.name } </p>
                 : ''
             }
           </div>

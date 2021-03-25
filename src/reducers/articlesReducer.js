@@ -25,6 +25,16 @@ export const articlesReducer = ( state = initialState, action ) => {
         articles: [ ...action.payload ]
       }
 
+    case types.articlesUpdated:
+      return {
+        ...state,
+        articles: state.articles.map(
+          article => article.id === action.payload.id
+            ? action.payload.article
+            : article
+        )
+      }
+
     case types.articlesLike:
       return {
         ...state,
@@ -42,6 +52,13 @@ export const articlesReducer = ( state = initialState, action ) => {
         ...state,
         active: null,
         articles: []
+      }
+
+    case types.articlesDelete:
+      return {
+        ...state,
+        active: null,
+        articles: state.articles.filter( article => article.id !== action.payload )
       }
 
     default:

@@ -1,21 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FcLikePlaceholder, FcLike } from 'react-icons/fc';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { openArticle, likeArticle, dislikeArticle } from '../actions/articles';
 
 export const SelectedContent = () => {
 
-  const { active:article } = useSelector(state => state.articles)
+
+  const dispatch = useDispatch();
+
+  const { active:article  } = useSelector(state => state.articles)
   console.log(article);
+
+  const { like } = useSelector(state => state.articles )
 
   const articleContent = article.article.content
   // const articleContentJoined = articleContent.join( "\n" )
 
+  const handleLike = () => {
+    // dispatch( openArticle() );
+    dispatch( likeArticle() )
+  }
+
+  const handleDislike = () => {
+    dispatch( dislikeArticle() )
+  }
+
   return (
     <div selected__main-container>
-      <div className="selected-content">
+      <div  className="selected-content">
         <div className="like-btn-container">
-          <button className="like-btn"><FcLikePlaceholder className="like like-placeholder" /></button>
-          <FcLike />
+          {
+            like
+              ? <button onClick={ handleDislike } className="like-btn"><FcLike  /></button>
+              : <button onClick={ handleLike } className="like-btn"><FcLikePlaceholder /></button>
+          }
+
         </div>
         <div>
           <div className="article-body">
@@ -46,6 +65,9 @@ export const SelectedContent = () => {
                 ? ''
                 :  <p>- { article.chapter.title }: { article.chapter.name } </p>
             }
+          </div>
+          <div>
+            <p>Fuente legal: { article.legal_source }</p>
           </div>
         </div>
       </div>

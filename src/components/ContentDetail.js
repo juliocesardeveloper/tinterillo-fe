@@ -1,12 +1,14 @@
 import React from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { activeArticle } from '../actions/articles';
+import { activeArticle, dislikeArticle } from '../actions/articles';
 
 // import iconos
 import { FiArrowRight } from 'react-icons/fi';
 
 export const ContentDetail = ({res}) => {
+
+  const { like } = useSelector(state => state.articles)
 
   const dispatch = useDispatch();
 
@@ -21,8 +23,13 @@ export const ContentDetail = ({res}) => {
     dispatch(
       activeArticle( id, {
         ...article
-      })
-    )
+      }))
+    
+    if ( like ) {
+      dispatch( dislikeArticle() )
+
+    }
+  
     }
 
   return(

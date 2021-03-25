@@ -20,7 +20,7 @@ export default function Nav(){
 	// let login = <Login />
     const [register, setRegister] = useState(false)
     const [login, setLogin] = useState(false)
-		const [profilePage, setProfilePage] = useState(true)
+		const [profilePage, setProfilePage] = useState(false)
 
 		const { isLogged } = useSelector(state => state.ui)
 		const { displayName } = useSelector( state => state.auth )

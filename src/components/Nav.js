@@ -20,6 +20,7 @@ export default function Nav(){
 	// let login = <Login />
     const [register, setRegister] = useState(false)
     const [login, setLogin] = useState(false)
+		const [profilePage, setProfilePage] = useState(true)
 
 		const { isLogged } = useSelector(state => state.ui)
 		const { displayName } = useSelector( state => state.auth )
@@ -39,19 +40,32 @@ export default function Nav(){
     }
 
 		const handleOpenProfile = (e) => {
-			
+			// e.preventDefault()
+			setProfilePage(true)
+		}
+
+		const handleHome = (e) => {
+			// e.preventDefault()
+			setProfilePage(false)
 		}
 
 		const handleLogout = () => {
 			dispatch( startLogout() )
 			dispatch( uiIsLoggedOut() )
+			setProfilePage(false)
 		}
 
     return(
 			<>
 				<nav className='nav__content'>
 					<div className="logo-container">
-						<Link to="/"><img className="tinterillo-logo" src={ logo } alt=""/></Link>
+					<Link onClick={handleHome} to="/"><img className="tinterillo-logo" src={ logo } alt=""/></Link>
+					{
+						profilePage
+							? <Link onClick={handleHome} className="nav-button" to="/">Realizar nueva búsqueda</Link>
+							: ""
+					}
+
 					</div>
 					<ul className='nav__content-sesion'>
 						{
@@ -77,13 +91,6 @@ export default function Nav(){
 					{
 						register ? <Register /> : login ? <Login /> : ""
 					}
-
-
-					{/* {!register
-					?
-					<Register />
-					: 
-					<Login />} */}
 
 				</ModalForm>
 			</>

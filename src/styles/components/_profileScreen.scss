@@ -4,4 +4,11 @@
   background-image: url("../../Images/Background.jpg");
   font-size: 1.8rem;
   // color: $title-color;
+  
+}
+
+.articles-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

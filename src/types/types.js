@@ -30,5 +30,7 @@ export const types = {
   articlesDislike: '[Articles] Delete Favorite Article',
   articlesLogoutCleaning: '[Articles] Logout Cleaning',
   articlesClean: '[Articles] Clean Articles',
+  articlesUpdated: '[Articles] Update Articles',
+  articlesDelete: '[Articles] Delete Articles'
 
 }

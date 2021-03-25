@@ -11,20 +11,21 @@ import initialState from '../initialState';
 export default function MainSearch() {
   const [show, setShow] = useState(false)
   const [style, setStyle] = useState('header')
-  const [data, setData] = useState('') // input
-  const [dataDos, setDataDos] = useState(""); // input
+  const [data, setData] = useState('colombia') // input
+  const [dataDos, setDataDos] = useState('colombia'); // input
   const [change, setChange] = useState(false)
   const history = useHistory()
-  const [dataApi, setDataApi] = useState({})
+  const [dataApi, setDataApi] = useState(initialState)
 
-  // const URL = 'https://searcher-col.herokuapp.com/api/es/search?search=pluralista&index=constitucion'
-  const URL = 'http://localhost:4000/api/es/search'
-
+  // const URL = 'https://searcher-col.herokuapp.com/api/es/search?index=prueba-de-carga&search=colombia'
+  const URL = 'https://searcher-col.herokuapp.com/api/es/search'
+  
   useEffect(() => {
-    fetch(`${URL}?search=${data}&index=constitucion_politica_de_colombia`)
+    fetch(`${URL}?index=prueba-de-carga&search=${data}`)
       .then(response => response.json())
       .then(res => {
-        res.body.hits.hits.length > 0
+        console.log("res", );
+        res.hits.hits.length > 0
           ? setDataApi(res)
           : setDataApi(initialState)
       })
@@ -38,6 +39,7 @@ export default function MainSearch() {
     e.preventDefault();
     // Search keywords in API
     if (data) {
+
       setStyle('header__all')
       setShow(true)
       setDataDos(data)
@@ -79,7 +81,8 @@ export default function MainSearch() {
             <ResultContent info={dataApi} />
             :
             show &&
-            dataApi.body.hits.hits.map(info => {
+            dataApi.hits.hits.map(info => {
+                
               return (
                 <div className="results-container">
                   <Results key={info._id} click={handleClickResults} info={info} />

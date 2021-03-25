@@ -1,4 +1,6 @@
+
 import React, { useState } from 'react'
+
 import { FcLikePlaceholder, FcLike } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
 import { openArticle, likeArticle, dislikeArticle } from '../actions/articles';
@@ -72,7 +74,7 @@ export const SelectedContent = () => {
         </div>
       </div>
       <div className="back-btn">
-        <h4>Regresar</h4>
+        {/* <Link><h4> Regresar </h4></Link> */}
       </div>
     </div>
   )

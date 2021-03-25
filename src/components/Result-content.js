@@ -12,7 +12,7 @@ function ResultContent({ info }){
     <div className='main__result'>
       <div className='main__result-left'>
         {
-          info.body.hits.hits.map(res => {
+          info.hits.hits.map(res => {
             return(
               <ContentDetail key={res._id} res={res}/>
             )

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import { FcLikePlaceholder, FcLike } from 'react-icons/fc';
 import { useSelector } from 'react-redux';
 
@@ -50,7 +51,7 @@ export const SelectedContent = () => {
         </div>
       </div>
       <div className="back-btn">
-        <h4>Regresar</h4>
+        {/* <Link><h4> Regresar </h4></Link> */}
       </div>
     </div>
   )

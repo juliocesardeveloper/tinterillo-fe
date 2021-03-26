@@ -6,13 +6,15 @@ import ResultContent from '../components/Result-content'
 import logo from "../Images/logo-tinterillo-light-color.png";
 import { FaSearch } from 'react-icons/fa';
 import initialState from '../initialState';
+import Swal from 'sweetalert2';
+import { useForm } from '../hooks/useForm';
 // import Swal from 'sweetalert2';
 
 export default function MainSearch() {
   const [show, setShow] = useState(false)
   const [style, setStyle] = useState('header')
-  const [data, setData] = useState('colombia') // input
-  const [dataDos, setDataDos] = useState('colombia'); // input
+  const [data, setData] = useState('Articulo 1') // input
+  const [dataDos, setDataDos] = useState('Articulo 1'); // input
   const [change, setChange] = useState(false)
   const history = useHistory()
   const [dataApi, setDataApi] = useState(initialState)
@@ -24,13 +26,16 @@ export default function MainSearch() {
     fetch(`${URL}?index=prueba-de-carga&search=${data}`)
       .then(response => response.json())
       .then(res => {
-        console.log("res", );
         res.hits.hits.length > 0
           ? setDataApi(res)
           : setDataApi(initialState)
       })
       .catch(err => {
         console.log('[ERROR]');
+        Swal.fire({
+          icon: 'error',
+          title: 'Búsqueda no válida, vamos, puedes hacerlo mejor ;)'
+        })
       })
   }, [dataDos])
 
@@ -38,17 +43,22 @@ export default function MainSearch() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Search keywords in API
-    if (data) {
-
+    if (data.length > 0) {
       setStyle('header__all')
       setShow(true)
       setDataDos(data)
       // history.push('/search')
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Búsqueda vacía, vamos, puedes hacerlo mejor ;)'
+      })
     }
   }
   //Asigna el valor del input al estado "data"
   const handleChange = (event) => {
     setData(event.target.value)
+    console.log(data);
   }
   //Muestra el segundo componente con los resultados de la busqueda
   const handleClickResults = () => {
@@ -65,7 +75,11 @@ export default function MainSearch() {
             <h1>TINTERILLO APP</h1>
             <div>
               <section className="section__input">
-                <input type="text" onChange={handleChange} />
+                <input
+                  type="text"
+                  placeholder="Realiza una búsqueda"
+                  onChange={handleChange}
+                />
                 <button className='icon-search' type='submit'>
                   <FaSearch />
                 </button>
@@ -82,7 +96,6 @@ export default function MainSearch() {
             :
             show &&
             dataApi.hits.hits.map(info => {
-                
               return (
                 <div className="results-container">
                   <Results key={info._id} click={handleClickResults} info={info} />

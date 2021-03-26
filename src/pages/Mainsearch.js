@@ -31,7 +31,7 @@ export default function MainSearch() {
           : setDataApi(initialState)
       })
       .catch(err => {
-        console.log('[ERROR]');
+        // console.log('[ERROR]');
         Swal.fire({
           icon: 'error',
           title: 'Búsqueda no válida, vamos, puedes hacerlo mejor ;)'
@@ -58,7 +58,6 @@ export default function MainSearch() {
   //Asigna el valor del input al estado "data"
   const handleChange = (event) => {
     setData(event.target.value)
-    console.log(data);
   }
   //Muestra el segundo componente con los resultados de la busqueda
   const handleClickResults = () => {

@@ -29,7 +29,7 @@ export default function MainSearch() {
         Swal.fire({
           icon: 'error',
           title: 'Parce, lo sentimos!',
-          text: 'Tu búsqueda no aparece en la constitución. Intenta con otra ;)'
+          text: 'Tu búsqueda no aparece en las leyes colombianas. Intenta con otra ;)'
         })
       })
   }, [dataDos])

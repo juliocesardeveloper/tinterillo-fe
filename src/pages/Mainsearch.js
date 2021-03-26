@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import Results from "../components/results";
 import Nav from "../components/Nav";
 import ResultContent from '../components/Result-content'
@@ -7,8 +6,6 @@ import logo from "../Images/logo-tinterillo-light-color.png";
 import { FaSearch } from 'react-icons/fa';
 import initialState from '../initialState';
 import Swal from 'sweetalert2';
-import { useForm } from '../hooks/useForm';
-// import Swal from 'sweetalert2';
 
 export default function MainSearch() {
   const [show, setShow] = useState(false)
@@ -16,12 +13,10 @@ export default function MainSearch() {
   const [data, setData] = useState('Articulo 1') // input
   const [dataDos, setDataDos] = useState('Articulo 1'); // input
   const [change, setChange] = useState(false)
-  const history = useHistory()
   const [dataApi, setDataApi] = useState(initialState)
 
-  // const URL = 'https://searcher-col.herokuapp.com/api/es/search?index=prueba-de-carga&search=colombia'
   const URL = 'https://searcher-col.herokuapp.com/api/es/search'
-  
+
   useEffect(() => {
     fetch(`${URL}?index=prueba-de-carga&search=${data}`)
       .then(response => response.json())
@@ -31,10 +26,10 @@ export default function MainSearch() {
           : setDataApi(initialState)
       })
       .catch(err => {
-        // console.log('[ERROR]');
         Swal.fire({
           icon: 'error',
-          title: 'Búsqueda no válida, vamos, puedes hacerlo mejor ;)'
+          title: 'Parce, lo sentimos!',
+          text: 'Tu búsqueda no aparece en la constitución. Intenta con otra ;)'
         })
       })
   }, [dataDos])
@@ -103,7 +98,6 @@ export default function MainSearch() {
               )
             })
         }
-        
       </div>
     </>
   )

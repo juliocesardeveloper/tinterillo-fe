@@ -1,0 +1,12 @@
+.modal-staff {
+  background-color: $light-color;
+  border-radius: 28px;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 500px;
+  width: 250px;
+}

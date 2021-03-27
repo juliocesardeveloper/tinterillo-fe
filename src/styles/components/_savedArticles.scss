@@ -1,9 +1,10 @@
 
 .selected-article-container {
+  background-color: $light-color;
   display: flex;
   flex-direction: column;
   margin: 2rem 4rem 0 4rem;
-  color: $color-text;
+  color: $dark-color;
   border: 0.5px solid lightgray;
   padding: 3rem;
   border-radius: 28px;

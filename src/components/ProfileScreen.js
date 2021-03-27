@@ -3,6 +3,7 @@ import React from 'react'
 import { SavedArticles } from './SavedArticles'
 import Nav from './Nav'
 import { useSelector } from 'react-redux'
+import { Footer } from './Footer'
 
 export const ProfileScreen = ({ children }) => {
 
@@ -11,21 +12,24 @@ export const ProfileScreen = ({ children }) => {
   return (
     <>
       <div className="profile-main-container">
-        <Nav />
-      </div>
-      <div className="articles-container">
+        <div className="profile-main-container__nav">
+          <Nav />
+        </div>
+        <div className="articles-container">
 
-        {
-          articles.map( article => (
-            <SavedArticles 
-              key={ article.id }
-              { ...article }
-            />
-          ))
-        }
+          {
+            articles.map( article => (
+              <SavedArticles 
+                key={ article.id }
+                { ...article }
+              />
+            ))
+          }
+        </div>
+        <div>
+          <Footer />
+        </div>
 
-
-        
       </div>
     </>
   )

@@ -4,6 +4,8 @@ import { types } from '../types/types';
 
 export const uiOpenModal = () => ({ type: types.uiOpenModal });
 export const uiCloseModal = () => ({ type: types.uiCloseModal });
+export const uiOpenStaffModal = () => ({ type: types.uiOpenStaffModal });
+export const uiCloseStaffModal = () => ({ type: types.uiCloseStaffModal });
 export const uiSetError = ( err ) => ({
   type: types.uiSetError,
   payload: err

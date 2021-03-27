@@ -6,6 +6,7 @@ import logo from "../Images/logo-tinterillo-light-color.png";
 import { FaSearch } from 'react-icons/fa';
 import initialState from '../initialState';
 import Swal from 'sweetalert2';
+import { Footer } from '../components/Footer';
 
 export default function MainSearch() {
   const [show, setShow] = useState(false)
@@ -98,6 +99,9 @@ export default function MainSearch() {
               )
             })
         }
+      </div>
+      <div>
+        <Footer />
       </div>
     </>
   )

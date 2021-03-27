@@ -4,6 +4,8 @@ export const types = {
   uiCloseModal: '[ui] Close modal',
   uiIsLogged: '[ui] Is Logged',
   uiIsLoggedOut: '[ui] Is Logged Out',
+  uiOpenStaffModal: '[ui] Open Staff Modal',
+  uiCloseStaffModal: '[ui] Close Staff Modal',
 
   uiSetError: '[ui] Set Error',
   uiRemoveError: '[ui] Remove Error',

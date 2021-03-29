@@ -24,7 +24,7 @@ export const Footer = () => {
       <div className="footer-container">
         <div className="footer-section1">
           <p> Tinterillo App </p>
-          <p> es un proyecto SWAT Neo </p>
+          <p> es un proyecto <a href="https://platzi.com/blog/swat-platzi-master/" target="_blank" rel='noreferrer'>SWAT Neo</a> </p>
           <p> del programa <a href="https://platzi.com/blog/conoce-que-es-platzi-master/" target="_blank" rel='noreferrer'>Platzi Master</a> de <a href="https://platzi.com/cursos/" target="_blank" rel='noreferrer'>
               Platzi
             </a>

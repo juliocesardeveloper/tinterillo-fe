@@ -11,7 +11,6 @@ function Results({click, info}){
   const id = info._id
   const article = info._source
   const content = info._source.article.content[0]
-  console.log(content);
   const contentAbstract = content.split(" ", 30).slice(2).join(" ")
 
   const onClick = () => {
@@ -25,7 +24,7 @@ function Results({click, info}){
 
   return(
     <div>
-      <div className='result__content' onClick={onClick}>
+      <div key={ id } className='result__content' onClick={onClick}>
         <div className='result__content-guide'>
           <h2 className='item'>{info._source.headline.Title}</h2>
           <FiArrowRight className='icon'/>

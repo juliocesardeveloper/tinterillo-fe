@@ -1,0 +1,30 @@
+
+.selected-article-container {
+  background-color: $light-color;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 4rem 0 4rem;
+  color: $dark-color;
+  border: 0.5px solid lightgray;
+  padding: 3rem;
+  border-radius: 28px;
+  width: 70%;
+}
+
+.delete-btn-container {
+  align-self: flex-end;
+}
+.delete-btn {
+  background-color: $dark-color;
+  border: none;
+  border-radius: 10px;
+  color: $light-color;
+  margin-top: 30px;
+  outline: none;
+  padding: 5px;
+  &:hover {
+    background-color: #B47EA3;
+    color: $dark-color;
+    cursor: pointer;
+  }
+}

@@ -14,6 +14,7 @@ import MainSearch from '../pages/Mainsearch'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'
 import { uiIsLogged } from '../actions/ui';
+import { startLoadingArticles } from '../actions/articles';
 
 export const AppRouter = () => {
 
@@ -25,11 +26,13 @@ export const AppRouter = () => {
 
   useEffect(() => {
 
-    firebase.auth().onAuthStateChanged( (user) => {
+    firebase.auth().onAuthStateChanged( async(user) => {
       if ( user?.uid ) {
         dispatch( firebaseLogin( user.uid, user.displayName ) );
         dispatch( uiIsLogged() )
         setIsLoggedIn( true );
+        dispatch(startLoadingArticles( user.uid ));
+
       } else {
         setIsLoggedIn( false );
       }

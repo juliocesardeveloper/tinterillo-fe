@@ -1,12 +1,15 @@
 import React from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { activeArticle } from '../actions/articles';
+import { activeArticle, dislikeArticle, openArticle } from '../actions/articles';
 
 // import iconos
 import { FiArrowRight } from 'react-icons/fi';
 
 export const ContentDetail = ({res}) => {
+
+
+  const { like } = useSelector(state => state.articles)
 
   const dispatch = useDispatch();
 
@@ -17,16 +20,23 @@ export const ContentDetail = ({res}) => {
   const contentAbstract = articleContent.split(" ", 10).slice(2).join(" ")
 
   const handleClick = () => {
+    // dispatch( openArticle( article ) );
+    // console.log(article);
       // setChange(true)
     dispatch(
       activeArticle( id, {
         ...article
-      })
-    )
+      }))
+    
+    if ( like ) {
+      dispatch( dislikeArticle() )
+
+    }
+  
     }
 
   return(
-    <div onClick={handleClick} className='side-content'>
+    <div key={ id } onClick={handleClick} className='side-content'>
       <div className="side-content-title">
         <FiArrowRight className='item'/>
         <p className='item'>{articleName}</p>

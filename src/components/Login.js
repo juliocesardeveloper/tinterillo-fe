@@ -15,6 +15,8 @@ export const Login = () => {
 
   const dispatch = useDispatch();
   const { loading, msgError } = useSelector(state => state.ui)
+  
+  
 
   const [ formLoginValues, handleLoginInputChange ] = useForm({
     lEmail: '',
@@ -25,7 +27,7 @@ export const Login = () => {
 
    const handleLogin = ( e ) => {
     e.preventDefault();
-
+    
     // dispatch( startLogin( lEmail, lPassword ) );
 
     if ( isFormValid() ) {
@@ -33,6 +35,11 @@ export const Login = () => {
       dispatch( uiCloseModal() )
     }
 
+   }
+
+   const handleGoogleLogin = () => {
+     dispatch( startGoogleLogin() );
+     dispatch( uiCloseModal() )
    }
 
    const isFormValid = () => {
@@ -47,10 +54,6 @@ export const Login = () => {
     return true;
   }
 
-  const handleGoogleLogin = () => {
-    dispatch( startGoogleLogin() );
-    dispatch( uiCloseModal() )
-  }
 
   return (
     <>

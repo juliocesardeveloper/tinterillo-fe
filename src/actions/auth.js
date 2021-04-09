@@ -11,6 +11,8 @@ export const startLoginEmailPassword = (email, password) => {
 
     firebase.auth().signInWithEmailAndPassword( email, password )
       .then( ({ user }) => {
+        console.log(user.uid);
+        localStorage.setItem('uid', user.uid);
 
         if ( user.uid ) {
           dispatch( firebaseLogin( user.uid, user.displayName ));
@@ -123,7 +125,9 @@ export const authLogout = () => ({
 //         uid: body.user._id,
 //         name: body.user.name
 //       }))
+
 //     }
+    
 //   }
 
 
@@ -146,35 +150,32 @@ export const authLogout = () => ({
 // }
 
 
-// export const startRegister = ( email, password, name ) => {
-//   return async( dispatch ) => {
-//     const resp = await fetchAut( 'auth/sign-up', { email, password, name }, 'POST' );
-//     const body = await resp.json();
+export const startRegister = ( name, lastName, email, password, department, gender, birthDate, job ) => {
+  return async() => {
+    const resp = await fetchSinToken( 'auth/sign-up', { name, lastName, email, password, department, gender, birthDate, job }, 'POST' );
+    const body = await resp.json();
+    console.log(body);
+    // if ( body.ok ) {
 
-//     if ( body.ok ) {
 
-//       dispatch( login({
-//         uid: body._id,
-//         name: body.name
-//       }))
 
-//       Swal.fire({
-//         icon: 'success',
-//         title: 'Felicitaciones, te has registrado satisfactoriamente',
-//         showConfirmButton: false,
-//         timer: 1500
-//       })
+    //   Swal.fire({
+    //     icon: 'success',
+    //     title: 'Felicitaciones, te has registrado satisfactoriamente',
+    //     showConfirmButton: false,
+    //     timer: 1500
+    //   })
 
-//     } else {
-//       Swal.fire({
-//         icon: 'error',
-//         title: 'Oops...',
-//         text: 'Ya te registraste antes',
-//         footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
-//       })
-//     }
-//   }
-// }
+    // } else {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Oops...',
+    //     text: 'Ya te registraste antes',
+    //     footer: '<a classname="swal-text" href="/">Ir al inicio</a>'
+    //   })
+    // }
+  }
+}
 
 // export const startChecking = ( email, password ) => {
 //   return async(dispatch) => {

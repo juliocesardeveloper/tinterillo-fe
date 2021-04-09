@@ -5,6 +5,10 @@ import { useForm } from '../hooks/useForm'
 import validator from 'validator'
 import { uiCloseModal, uiRemoveError, uiSetError } from '../actions/ui'
 import { BiErrorAlt } from 'react-icons/bi'
+import { FaUserAlt } from 'react-icons/fa'
+import { RiLockPasswordFill } from 'react-icons/ri'
+import { MdEmail } from 'react-icons/md'
+
 
 const departmentOptions = [
   "Amazonas",
@@ -48,22 +52,12 @@ const genderOptions = [
   "Prefiero no decir"
 ]
 
-import { FaUserAlt } from 'react-icons/fa'
-import { RiLockPasswordFill } from 'react-icons/ri'
-import { MdEmail } from 'react-icons/md'
 
 export const Register = () => {
 
   const dispatch = useDispatch();
   const { msgError,  } = useSelector(state => state.ui);
   
-
-  // const [selectedDepartmentValue, handleSelectedDepartmentValues] = useForm({
-  //   rDepartment: ''
-  // })
-
-  // const { rDepartment } = selectedDepartmentValue
-
 
   const [ formRegisterValues, handleRegisterInputChange ] = useForm({
     rName: '',
@@ -85,7 +79,9 @@ export const Register = () => {
 
     if ( isFormValid() ) {
       dispatch( startRegisterWithEmailPasswordName( rEmail, rPassword1, rName ) )
+      dispatch( startRegister( rName, rLastName, rEmail, rPassword1, rPassword2, rDepartment, rGender, rBirthday, rJob ) )
       dispatch( uiCloseModal() )
+
     }
 
    }
@@ -135,14 +131,23 @@ export const Register = () => {
               </div>
             )
           }
-          
           <div className="input-container">
             <FaUserAlt className="input-icon" />
             <input
               type="text"
-              placeholder="Nombre completo"
+              placeholder="Nombre"
               name="rName"
               value={ rName }
+              onChange={ handleRegisterInputChange }
+            />
+          </div>
+          <div className="input-container">
+            <FaUserAlt className="input-icon" />
+            <input
+              type="text"
+              placeholder="Apellido"
+              name="rLastName"
+              value={ rLastName }
               onChange={ handleRegisterInputChange }
             />
           </div>
@@ -176,36 +181,45 @@ export const Register = () => {
               onChange={ handleRegisterInputChange }
             />
           </div>
-          <select className="select" id="departments" name="rDepartment" value={rDepartment} onChange={handleRegisterInputChange}>
-            <option value="">Departamento</option>
-            {
-              departmentOptions.map((item, index) => (
-                <option className="option" key={ index }>{ item }</option>
-              ))
-            }
-          </select>
-          <select className="select" id="gender" name="rGender" value={rGender} onChange={handleRegisterInputChange}>
-            <option value="">Género</option>
-            {
-              genderOptions.map((item, index) => (
-                <option className="option" key={ index }>{ item }</option>
-              ))
-            }
-          </select>
-          <input
-            type="date"
-            placeholder="Fecha de nacimiento"
-            name="rBirthday"
-            value={ rBirthday }
-            onChange={ handleRegisterInputChange }
-          />
-          <input
-            type="text"
-            placeholder="Profesión"
-            name="rJob"
-            value={ rJob }
-            onChange={ handleRegisterInputChange }
-          />
+          <div className="input-container">
+            <select className="select" id="departments" name="rDepartment" value={rDepartment} onChange={handleRegisterInputChange}>
+              <option value="">Departamento</option>
+              {
+                departmentOptions.map((item, index) => (
+                  <option className="option" key={ index }>{ item }</option>
+                ))
+              }
+            </select>
+          </div>
+          <div className="input-container">
+
+            <select className="select" id="gender" name="rGender" value={rGender} onChange={handleRegisterInputChange}>
+              <option value="">Género</option>
+              {
+                genderOptions.map((item, index) => (
+                  <option className="option" key={ index }>{ item }</option>
+                ))
+              }
+            </select>
+          </div>
+          <div className="input-container">
+            <input
+              type="date"
+              placeholder="Fecha de nacimiento"
+              name="rBirthday"
+              value={ rBirthday }
+              onChange={ handleRegisterInputChange }
+            />
+          </div>
+          <div className="input-container">
+            <input
+              type="text"
+              placeholder="Profesión"
+              name="rJob"
+              value={ rJob }
+              onChange={ handleRegisterInputChange }
+            />
+          </div>
 
           <button type="submit" className="form-btn register-btn">Registrarme</button>
         </form>
